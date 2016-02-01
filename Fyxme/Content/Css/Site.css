@@ -1,0 +1,769 @@
+﻿/* Common */
+
+html, body {
+	background-color: #fff;
+	color: #586165;
+	font-family: 'Corbel', serif;
+    font-size: 21px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 300px;
+    text-align: center;
+    height:2000px;
+}
+
+@media (min-width:1030px) {
+	.desktop-only { display:block !important; }
+	.mobile-only { display:none !important; }
+}
+ 
+@media (max-width: 1029px) {
+	.desktop-only { display:none !important; }
+    .mobile-only { display:block !important; }
+}
+
+@media (max-width: 459px) {
+	.desktop-only { display:none !important; }
+    .mobile-only { display:block !important; }
+}
+
+.text-item-default
+{
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 26px;
+	text-align: center;
+	text-transform: none;
+}
+
+.img-circle {
+    border-radius: 50%;
+    cursor: pointer;
+}
+.img-circle:hover {
+    border: 2px solid #139deb;
+}
+
+.centered-text {
+    text-align:center;
+}  
+
+.btn-default-blue {
+    width: 50%;
+    background-color: #139deb;
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+	font-size: 19px;
+	font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.btn-default-blue:hover { background-color: #0071bc; }
+
+
+/* Top Menu */
+
+#top_menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 99;
+}
+
+#top_bg_color {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #000;
+    opacity: 0;
+    z-index: 98;
+}
+
+#top_menu #fyxme_logo
+{
+    text-align: left;
+	margin-top: 12px;
+	margin-left: 25px;
+    float: left;
+}
+
+#top_menu #options
+{
+    float: right;
+    text-align: right;
+	margin-top: 8px;
+	margin-right: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 17px;
+    color: #ccc;
+}
+
+@media (min-width:1030px) {
+    #top_menu #options .option {
+        float: left;
+        margin-top: 25px;
+        margin-right: 14px;
+        margin-left: 14px;
+        cursor: pointer;
+    }
+
+    .get-started-form
+    {
+        width: 85%; 
+	    text-align: center;
+        border: 2px solid #139deb;
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+
+@media (max-width:1029px) {
+    #top_menu #options .option {
+        float: left;
+        margin-top: 22px;
+        margin-right: 14px;
+        margin-left: 14px;
+        cursor: pointer;
+    }
+    #mob_top_bg_color {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 330px;
+        background-color: #000;
+        opacity: 1;
+        z-index: 98;
+        display:none;
+        border-bottom: 2px solid #139deb;
+    }
+    #mob_options {
+        position: fixed;
+        text-align: center;
+        margin-top: 90px;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 17px;
+        color: #ccc;
+        cursor: pointer;
+        z-index: 99;
+        width: 100%;
+        height: 330px;
+        display: none;
+    }
+    #mob_options .mob_option {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    #mob_options .mob_get_started_box
+    {
+        background-color: #139deb;
+        color: #231f20;
+        font-weight: bold;
+        font-size: 17px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 160px;
+        cursor: pointer;
+        display: inline-block;
+    }
+    #mob_options .mob_get_started_box:hover { background-color: #0071bc; }
+
+    .get-started-form
+    {
+        width: 100%; 
+	    text-align: center;
+        border: 2px solid #139deb;
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+
+#top_menu #options .option a
+{
+    color: #ccc;
+    text-decoration: none;
+}
+
+#top_menu #options .option a:hover
+{
+    color: #999;
+}
+
+#top_menu #options .blue
+{
+    float: left;
+    margin-right: 14px;
+    margin-top: 22px;
+    margin-left: 14px;
+    color: #139deb;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+#top_menu #options .get_started_box
+{
+    float: left;
+    background-color: #139deb;
+    color: #231f20;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 20px;
+    margin-right: 14px;
+    margin-left: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    display: none;
+}
+#top_menu #options .get_started_box:hover { background-color: #0071bc; }
+
+
+/* Section < Body shop to your doorstep > */
+
+#bg_top
+{
+	min-height: 726.9500000000003px;
+	padding-bottom: 0px;
+	background: #CCCCCC url("/Content/Images/2015-11-15%20032220.jpg") no-repeat center bottom;
+	background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+#bg_top .align_to_page
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	position: relative;
+	left: -100px;
+	padding-top: 290px;
+	padding-bottom: 72px;
+}
+
+.caption_center_white_1 
+{
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: none;
+    padding: 0px 0px 12px;
+    margin-top: 304px;
+    line-height: 40px;
+}
+
+.caption_center_white_2
+{
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: none;
+    padding: 0px;
+}
+
+.caption_learn_more
+{
+	width: 140px;
+	color: #F7941E;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 12px;
+    font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+    text-decoration: none;
+    line-height: 12px;
+}
+.caption_learn_more:hover { color: #F7941E; text-decoration: none; }
+
+#spacer_to_caption_learn_more { margin-top: 160px; }
+
+
+/* Section < How it works > */
+
+#spacer_to_content
+{
+	margin-top: 637px;
+    position: absolute;
+    width: 100%;
+}
+
+.section_title
+{
+    color: #231f20;
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 31px;
+	font-weight: normal;
+	text-align: center;
+	text-transform: none;
+	padding: 0px 0px 12px;
+    padding-top: 138px;
+	line-height: 41px;
+	margin-left: 20px;
+}
+
+.subtitle_center
+{
+	color: #231F20;
+    font-family: 'Cabin', sans-serif;
+	font-size: 21px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: none;
+	padding: 0px 0px 12px;
+    line-height: 25px;
+}
+
+.subtitle_text_center
+{
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: center;
+	text-transform: none;
+	padding: 0px 0px 12px;
+}
+
+
+/* Section < Get Started Now > */
+
+#spacer_to_get_started_form_content
+{
+	margin-top: 27px;
+    margin-bottom: 41px;
+}
+
+.btn-get-started {
+    width: 100%;
+    background-color: #139deb;
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+	font-size: 19px;
+	font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: none;
+}
+.btn-get-started:hover { background-color: #0071bc; }
+
+.btn-get-started a {
+    text-decoration: none;
+    color: #fff;
+}
+.btn-get-started a:hover { color: #fff; text-decoration: none; }
+
+.btn-get-started-white {
+    width: 100%;
+    background-color: #fff;
+    color: #139deb;
+    font-family: 'Cabin', sans-serif;
+	font-size: 19px;
+	font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: none;
+}
+.a1_get_started_on {
+    text-decoration: none;
+    color: #139deb;
+}
+
+.btn-get-started-white #a1_get_started:hover { color: #139deb; text-decoration: none; }
+
+#form {
+    display: none;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+}
+
+#form #content {
+    text-align: center;
+    width: 90%;
+    display: inline-block;
+}
+
+.upload-pic-form
+{
+    margin-top: 15px;
+    display: none;
+}
+
+.text-item
+{
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+}
+.text-item-small
+{
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+}
+.text-item-small span { 
+    text-decoration: underline;
+    color: #139deb;
+    line-height: 20px;
+}
+
+.textbox {
+    width: 100%;
+	border: 1px solid #ccc;
+	padding: 6px;
+    background-color: #fff;
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+}
+
+.textarea {
+    width: 100%;
+	border: 1px solid #ccc;
+	padding: 6px;
+    background-color: #fff;
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+}
+
+#spacer-input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-upload {
+    width: 150px;
+    background-color: #139deb;
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: none;
+    border: 0px;
+}
+
+.u-file {
+    height: 0px;
+    width:0px; 
+    overflow:hidden;
+}
+
+
+/* Section < Why use fyxme > */
+
+#bg_why_fyxme_1
+{
+	min-height: 726.9500000000003px;
+	padding-bottom: 0px;
+	background: #CCCCCC url("/Content/Images/2015-11-15%20024052.jpg") no-repeat center center;
+	background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+#bg_why_fyxme_2
+{
+	min-height: 726.9500000000003px;
+	padding-bottom: 0px;
+	background: #CCCCCC url("/Content/Images/other_bodyshops.jpg") no-repeat center top;
+	background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+.section_title_why_fyxme
+{
+    color: #231f20;
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 31px;
+	font-weight: normal;
+	text-align: center;
+	text-transform: none;
+	padding: 0px 0px 12px;
+    margin-top: 341px;
+	line-height: 41px;
+	margin-left: 20px;
+}
+
+@media (max-width: 459px) {
+	.section_title_why_fyxme { margin-top: 265px; }
+}
+
+.caption_center_white_3
+{
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: none;
+    padding: 0px 0px 12px;
+    margin-top: 484px;
+    line-height: 40px;
+}
+
+@media (max-width: 459px) {
+	.caption_center_white_3 { margin-top: 350px; }
+}
+
+
+/* Section < Technicians > */
+
+
+.meet-our-tech
+{
+    color: #231f20;
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 31px;
+	font-weight: normal;
+	text-align: center;
+	text-transform: none;
+	padding: 138px 0px 30px;
+	line-height: 41px;
+	margin-left: 20px;
+}
+
+.tech-desc {
+    color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	text-align: left;
+	text-transform: none;
+    width: 85%;
+    display: inline-table;
+    margin-top: 30px;
+    
+}
+.tech-desc span {
+    color: #231F20;
+    font-family: 'Cabin', sans-serif;
+	font-size: 21px;
+	font-weight: 700;
+	text-align: left;
+	text-transform: none;
+    line-height: 25px;
+}
+
+.x-pos {
+    width:15%; 
+    float:right; 
+    text-align:right;
+}
+
+.tech-desc-content {
+    width:85%;
+}
+
+.x {
+    background-color: #c4c4c4;
+    color: #fff;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+    padding: 6px 12px 6px 12px;
+    display: inline-table;
+    cursor: pointer;
+}
+.x:hover {
+    background-color: #999999;
+}
+
+.tech-bottom {
+    color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	text-transform: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.tech-btn { 
+    margin-top: 15px; 
+    width: 220px;
+    display: inline-table;
+}
+
+
+/* Section < FAQ > */
+
+.faq-subtitle
+{
+	color: #fff;
+    font-family: 'Cabin', sans-serif;
+	font-size: 21px;
+	font-weight: 700;
+	text-align: left;
+	text-transform: none;
+	padding: 0px 0px 12px;
+    line-height: 25px;
+}
+
+.faq-subtitle-text
+{
+	color: #fff;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+	padding: 0px 0px 12px;
+}
+
+.faq-img {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.faq-sepparator {
+    width:100%;
+    background-color:#d06a27;
+    height:1px;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+
+/* Section < Testimonials > */
+
+.testi-img {
+    float: left;
+    margin-right: 15px;
+    min-height: 145px;
+	background-size: cover;
+    width: 218px;
+}
+
+.testi-bg-1 {
+    background: #CCCCCC url("/Content/Images/nicole.jpg") no-repeat center center;
+}
+.testi-bg-2 {
+    background: #CCCCCC url("/Content/Images/marian.jpg") no-repeat center top;
+}
+.testi-bg-3 {
+    background: #CCCCCC url("/Content/Images/img_5368-u3852-fr.jpg") no-repeat center center;
+}
+.testi-bg-4 {
+    background: #CCCCCC url("/Content/Images/img_5362-u3860-fr.jpg") no-repeat center top;
+}
+
+.testi-text {
+    color: #fff;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+}
+
+.testi-text p{
+    font-family: 'Cabin', sans-serif;
+	font-size: 21px;
+	font-weight: 700;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+
+/* Section < Contact Us > */
+
+.contact-us
+{
+    color: #231f20;
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 31px;
+	font-weight: normal;
+	text-align: center;
+	text-transform: none;
+	line-height: 41px;
+	margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+
+/* Section < Footer > */
+
+.footer-top-text{
+    font-family: 'Cabin', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+    padding-bottom: 10px;
+    color: #666;
+    text-align: left;
+}
+
+.footer-text {
+    color: #666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+.footer-text:hover {
+    text-decoration: underline;
+}
+
+.footer-text-copyright {
+    color: #999;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+    padding-top: 25px;
+}
+.footer-text-copyright span{ color: red; }
+
+
+#bgTopRequestSent {
+    min-height: 726.9500000000003px;
+	padding-bottom: 0px;
+	background: #CCCCCC url("/Content/Images/fyxme_van.jpg") no-repeat center top;
+	background-size: cover;
+    position: absolute;
+    width: 100%;
+}

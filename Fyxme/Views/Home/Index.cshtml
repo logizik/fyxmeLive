@@ -76,51 +76,61 @@
 
                                     @using (Html.BeginForm("AddRequest", "Home", FormMethod.Post))
                                     {
-                                        @Html.ValidationSummary("", new { @class = "text-danger" })
-
                                         <div class="text-item">Upload Photo(s)</div>
                                         <div id="upload_pic_1">
-                                            <input type="text" id="txtUploadPic1" name="txtUploadPic1" class="textbox" placeholder="Select a photo to upload" />
                                             <div class="u-file"><input id="txtUFile1" type="file" onchange="$('#txtUploadPic1').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                            <div style="text-align:left;float:left;margin-right:10px;"><button id="btnUpload1" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile1')">Select Photo</button></div>
-                                            <div style="text-align:left;"><button id="btnAddPic1" name="btnAddPic1" class="btn-upload" style="width:50px">+</button></div>
+                                            <input type="text" id="txtUploadPic1" name="txtUploadPic1" class="textbox" placeholder="Select a photo to upload" />
+                                            <div style="width:206px;">
+                                                <div id="btnAddPic1" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
+                                                <div id="btnUpload1" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile1');">Select Photo</div>
+                                            </div>
                                         </div>
                                         <div id="upload_pic_2" class="upload-pic-form">
                                             <input type="text" id="txtUploadPic2" name="txtUploadPic2" class="textbox" placeholder="Select a photo to upload" />
                                             <div class="u-file"><input id="txtUFile2" type="file" onchange="$('#txtUploadPic2').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                            <div style="text-align:left;float:left;margin-right:10px;"><button id="btnUpload2" name="btnUpload2" class="btn-upload" onclick="browseFile('txtUFile2')">Select Photo</button></div>
-                                            <div style="text-align:left;"><button id="btnAddPic2" name="btnAddPic2" class="btn-upload" style="width:50px">+</button></div>
+                                            <div style="width:206px;">
+                                                <div id="btnAddPic2" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
+                                                <div id="btnUpload2" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile2');">Select Photo</div>
+                                            </div>
                                         </div>
                                         <div id="upload_pic_3" class="upload-pic-form">
                                             <input type="text" id="txtUploadPic3" name="txtUploadPic3" class="textbox" placeholder="Select a photo to upload" />
                                             <div class="u-file"><input id="txtUFile3" type="file" onchange="$('#txtUploadPic3').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                            <div style="text-align:left;float:left;margin-right:10px;"><button id="btnUpload3" name="btnUpload3" class="btn-upload" onclick="browseFile('txtUFile3')">Select Photo</button></div>
-                                            <div style="text-align:left;"><button id="btnAddPic3" name="btnAddPic3" class="btn-upload" style="width:50px">+</button></div>
+                                            <div style="width:206px;">
+                                                <div id="btnAddPic3" name="btnAddPic3" class="btn-upload" style="float:right; width:50px">+</div>
+                                                <div id="btnUpload3" name="btnUpload3" class="btn-upload" onclick="browseFile('txtUFile3');">Select Photo</div>
+                                            </div>
                                         </div>
                                         <div id="upload_pic_4" class="upload-pic-form">
                                             <input type="text" id="txtUploadPic4" name="txtUploadPic4" class="textbox" placeholder="Select a photo to upload" />
-                                            <div class="u-file"><input id="txtUFile4" type="file" onchange="$('#txtUploadPic4').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                            <div style="text-align:left;"><button id="btnUpload4" name="btnUpload4" class="btn-upload" onclick="browseFile('txtUFile4')">Select Photo</button></div>
+                                            <div id="btnUpload4" name="btnUpload4" class="btn-upload" onclick="browseFile('txtUFile4');">Select Photo</div>
                                         </div>
                                         <div class="text-item-small">Don’t have a photo yet? No worries, just submit a brief description and text us the photo(s) later to <span>(323) 594-7401</span></div>
                                         <div>
                                             <div id="spacer-input">
                                                 @Html.TextBoxFor(model => model.FirstName, new { @class = "textbox", placeholder = "First Name" })
+                                                @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "field-validation-error" })
                                             </div>
                                             <div id="spacer-input">
                                                 @Html.TextBoxFor(model => model.LastName, new { @class = "textbox", placeholder = "Last Name" })
+                                                @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "field-validation-error" })
                                             </div>
                                             <div id="spacer-input">
                                                 @Html.TextBoxFor(model => model.Email, new { @class = "textbox", placeholder = "Email address" })
+                                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "field-validation-error" })
                                             </div>
                                             <div id="spacer-input">
                                                 @Html.TextBoxFor(model => model.MobilePhone, new { @class = "textbox", placeholder = "Mobile Phone Number" })
+                                                @Html.ValidationMessageFor(model => model.MobilePhone, null, new { @class = "field-validation-error" })
                                             </div>
                                             <div id="spacer-input">
                                                 @Html.TextBoxFor(model => model.ZipCode, new { @class = "textbox", placeholder = "Zip Code" })
+                                                @Html.ValidationMessageFor(model => model.ZipCode, null, new { @class = "field-validation-error" })
                                             </div>
                                             <div id="spacer-input">
-                                                @Html.TextAreaFor(model => model.DamageDescription, new { @class = "textarea", placeholder = "Damage Description (Optional)" })
+                                                @Html.TextAreaFor(model => model.DamageDescription, new { @class = "textarea", placeholder = "Damage Description (Optional)", id = "txtDamageDesc_01" } )
+                                                @Html.ValidationMessageFor(model => model.DamageDescription, null, new { @class = "field-validation-error" })
+                                                <div class="characters-available" id="damageDescCharactersLeft_01"><span>500</span> charaters available</div>
                                             </div>
                                             <div class="text-item-small">By submitting my request for a quote, I agree that Fyxme or its representatives may contact me by email, phone, or text message at the email address or telephone number I provided.</div>
                                             <div style="text-align:left;margin-bottom:16px;">

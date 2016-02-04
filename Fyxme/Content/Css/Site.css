@@ -64,6 +64,28 @@ html, body {
 }
 .btn-default-blue:hover { background-color: #0071bc; }
 
+.field-validation-error 
+{
+    color: #fff;
+    font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+    width: 100%;
+    text-align: left;
+    background-color:#e4756a;
+    display: inline-table;
+    padding: 5px 10px 5px 10px;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+.validation-summary-valid
+{
+    display: none;
+}
+
 
 /* Top Menu */
 
@@ -457,6 +479,20 @@ html, body {
 	font-size: 16px;
 }
 
+.characters-available
+{
+    color: #666666;
+    font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+    text-align: left;
+    display: inline-table;
+    margin-top: 10px;
+    width: 100%;
+}
+.characters-available span { font-weight: bold; }
+.characters-available strong { font-weight: bold; color: red; }
+
 #spacer-input {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -473,6 +509,8 @@ html, body {
     padding-bottom: 10px;
     text-transform: none;
     border: 0px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .u-file {

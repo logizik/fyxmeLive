@@ -133,11 +133,23 @@ $(function () {
         return false;
     });
 
+    // Calculate nb of characters left for damage description
+    $('#txtDamageDesc_01').keyup(function () { TruncateText(500, 'txtDamageDesc_01', 'damageDescCharactersLeft_01'); });
+
 });
 
 function browseFile(input) {
 
     document.getElementById(input).click();
+}
 
+function TruncateText(nbCar, field, div) {
 
+    var nbCharLeft = nbCar - ($('#' + field).val()).length;
+    if (nbCharLeft >= 0) {
+        $('#' + div).html("<span>" + nbCharLeft + "</span> characters left");
+    }
+    else {
+        $('#' + div).html("<strong>0</strong> characters left");
+    }
 }

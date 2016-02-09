@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Fyxme.Models;
 
@@ -21,13 +21,19 @@ namespace Fyxme.Controllers
             {
                 Database db = new Database();
 
-                // Add the lead.
-                db.Execute("insert into Lead (FirstName, LastName, Email, PhoneNumber, ZipCode, CreatedBy) values (@1, @2, @3, @4, @5, 0)",
+                // Add client's request.
+                object requestId = db.ExecuteScalar("insert into Request (LeadFirstName, LeadLastName, LeadEmail, LeadPhoneNumber, LeadZipCode, Origin, CreatedBy) output inserted.RequestId values (@1, @2, @3, @4, @5, @6, 0)",
                     new object[] { request.FirstName,
                     request.LastName,
                     request.Email,
-                    request.MobilePhone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""),
-                    request.ZipCode });
+                    request.PhoneNumber.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""),
+                    request.ZipCode,
+                    "WEB" });
+
+                // Add case.
+                db.Execute("insert into [Case] (RequestId, CarRank, CarMMYId, CarDesc, CaseStatus, ManagerId, CreatedBy) values (@1, 1, 1, @2, 1, 0, 0)",
+                    new object[] { Convert.ToInt32(requestId),
+                    request.DamageDescription });
 
                 db.Close();
 
@@ -42,5 +48,21 @@ namespace Fyxme.Controllers
         {
             return View();
         }
+
+        /*private void GetOrigin()
+        {
+            HttpBrowserCapabilities browserCap;
+            if (((HttpCapabilitiesBase)browserCap).IsMobileDevice)
+            {
+                labelText = "Browser is a mobile device.";
+            }
+            else
+            {
+                labelText = "Browser is not a mobile device.";
+            }
+
+            Label1.Text = labelText;
+        }*/
+
     }
 }

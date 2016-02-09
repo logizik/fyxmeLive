@@ -45,6 +45,19 @@ namespace Fyxme.Models
             cmd.ExecuteNonQuery();
         }
 
+        public object ExecuteScalar(string sql, params object[] args)
+        {
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.Clear();
+            for (int i = 1; i <= args.Length; i++)
+            {
+                cmd.Parameters.AddWithValue("@" + i, args[i - 1]);
+            }
+
+            return cmd.ExecuteScalar();
+        }
+
         public void Close()
         {
             conn.Close();

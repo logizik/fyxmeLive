@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System;
+using System.Web;
 
 namespace Fyxme.Models
 {
@@ -30,6 +31,8 @@ namespace Fyxme.Models
         public DateTime ReceivedDate { get; set; }
 
         public string Origin { get; set; }
+
+        public List<HttpPostedFileBase> UploadedCarImages { get; set; }
 
         [MaxLength(500, ErrorMessage = "The damage description can't exceed 500 caracters")]
         public string DamageDescription { get; set; }

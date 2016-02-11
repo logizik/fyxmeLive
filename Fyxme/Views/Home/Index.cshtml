@@ -74,11 +74,11 @@
                             <div id="form">
                                 <div id="content">
 
-                                    @using (Html.BeginForm("AddRequest", "Home", FormMethod.Post))
+                                    @using (Html.BeginForm("AddRequest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                     {
                                         <div class="text-item">Upload Photo(s)</div>
                                         <div id="upload_pic_1">
-                                            <div class="u-file"><input id="txtUFile1" type="file" onchange="$('#txtUploadPic1').val(this.value.split('\\').pop().split('/').pop());"></div>
+                                            <div class="u-file"><input id="txtUFile1" name="txtUFile1" type="file" onchange="$('#txtUploadPic1').val(this.value.split('\\').pop().split('/').pop());"></div>
                                             <input type="text" id="txtUploadPic1" name="txtUploadPic1" class="textbox" placeholder="Select a photo to upload" />
                                             <div style="width:206px;">
                                                 <div id="btnAddPic1" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
@@ -87,7 +87,7 @@
                                         </div>
                                         <div id="upload_pic_2" class="upload-pic-form">
                                             <input type="text" id="txtUploadPic2" name="txtUploadPic2" class="textbox" placeholder="Select a photo to upload" />
-                                            <div class="u-file"><input id="txtUFile2" type="file" onchange="$('#txtUploadPic2').val(this.value.split('\\').pop().split('/').pop());"></div>
+                                            <div class="u-file"><input id="txtUFile2" name="txtUFile2" type="file" onchange="$('#txtUploadPic2').val(this.value.split('\\').pop().split('/').pop());"></div>
                                             <div style="width:206px;">
                                                 <div id="btnAddPic2" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
                                                 <div id="btnUpload2" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile2');">Select Photo</div>

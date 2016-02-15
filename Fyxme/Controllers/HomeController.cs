@@ -104,7 +104,7 @@ namespace Fyxme.Controllers
                     new string[] { "LeadId", "CarRank", "CarMMYId", "DamageDesc", "CaseStatus", "ManagerId", "CreatedBy" },
                     new object[] { leadId, 1,
                     (int)carMMYId,
-                    request.DamageDescription,
+                    String.IsNullOrEmpty(request.DamageDescription) ? "" : request.DamageDescription,
                     1,
                     0,
                     0}, "CaseId");
@@ -117,7 +117,8 @@ namespace Fyxme.Controllers
                         new string[] { "CaseId", "PictureRank", "PictureName", "PictureLocation", "CreatedBy" },
                         new object[] { caseId, picRank,
                         uploadedImage,
-                        uploadDirImages,
+                        "need to be fix to 255 caracters",
+                        //uploadDirImages,
                         0}, "PictureId");
 
                     picRank++;

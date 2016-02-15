@@ -2,13 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Fyxme.Models
 {
     public class Request
     {
-        public enum RequestOrigin { Web, Mobile, Phone };
-
         public int RequestId { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
@@ -31,6 +30,19 @@ namespace Fyxme.Models
         public DateTime ReceivedDate { get; set; }
 
         public string Origin { get; set; }
+
+        /*[Required(ErrorMessage = "Car brand is required")]*/
+        public string SelectedCarMakerId { get; set; }
+        public IEnumerable<SelectListItem> DDListCarMakers { get; set; }
+
+        [Required(ErrorMessage = "Car model is required")]
+        public string SelectedCarModelId { get; set; }
+        public IEnumerable<SelectListItem> DDListCarModels { get; set; }
+
+        [Required(ErrorMessage = "Car year is required")]
+        public string SelectedCarYearId { get; set; }
+        public IEnumerable<SelectListItem> DDListCarYears { get; set; }
+
 
         public List<HttpPostedFileBase> UploadedCarImages { get; set; }
 

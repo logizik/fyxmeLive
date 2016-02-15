@@ -1,18 +1,61 @@
 ﻿using System;
 using System.IO;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using System.Linq;
 using Fyxme.Models;
 
 namespace Fyxme.Controllers
 {
     public class HomeController : Controller
     {
+        public static List<CarMMY> carsMMYY = new List<CarMMY>();
+
         public ActionResult Index()
         {
-            return View();
+            Database db = new Database();
+
+            // Get list of distinct car makers
+            SqlDataReader sdrCarMakers = db.GetData("select distinct upper(CarMake) CarMake from CarMMY where Active = 1 order by 1");
+
+            List<SelectListItem> carMakers = new List<SelectListItem>();
+            carMakers.Add(new SelectListItem { Text = "Car Brand" });
+
+            while (sdrCarMakers.Read())
+            {
+                carMakers.Add(new SelectListItem { Value = sdrCarMakers["CarMake"].ToString(), Text = sdrCarMakers["CarMake"].ToString() });
+            }
+
+            sdrCarMakers.Close();
+
+            // Get list of distinct car models
+            SqlDataReader sdrCarModels = db.GetData("select distinct upper(CarModel) CarModel from CarMMY where Active = 1 order by 1");
+
+            List<SelectListItem> carModels = new List<SelectListItem>();
+            carModels.Add(new SelectListItem { Text = "Car Model" });
+
+            while (sdrCarModels.Read())
+            {
+                carModels.Add(new SelectListItem { Value = sdrCarModels["CarModel"].ToString(), Text = sdrCarModels["CarModel"].ToString() });
+            }
+
+            sdrCarModels.Close();
+
+            db.Close();
+
+            // Empty list of car years
+            List<SelectListItem> carYears = new List<SelectListItem>();
+            carYears.Add(new SelectListItem { Text = "Car Year" });
+
+            var requestModel = new Request();
+            requestModel.DDListCarMakers = carMakers;
+            requestModel.DDListCarModels = carModels;
+            requestModel.DDListCarYears = carYears;
+
+            return View(requestModel);
         }
 
         [HttpPost]
@@ -22,6 +65,8 @@ namespace Fyxme.Controllers
             {
                 // Save files on server.
                 string uploadDirImages = Server.MapPath(WebConfigurationManager.AppSettings["uploadPicsDirectory"].ToString());
+                List<string> uploadedNewNameImages = new List<string>();
+
                 for (int iImages = 1; iImages <= 4; iImages++)
                 {
                     HttpPostedFileBase uploadedFile = Request.Files["txtUFile" + iImages];
@@ -29,24 +74,21 @@ namespace Fyxme.Controllers
                     {
                         int pos = uploadedFile.FileName.LastIndexOf(".");
                         string fileExtension = uploadedFile.FileName.Substring(pos + 1);
-                        string fileNameTemp = String.Concat(Guid.NewGuid().ToString(), ".", fileExtension);
+                        string fileNewImageName = String.Concat(Guid.NewGuid().ToString(), ".", fileExtension);
 
-                        uploadedFile.SaveAs(String.Concat(uploadDirImages, fileNameTemp));
+                        uploadedFile.SaveAs(String.Concat(uploadDirImages, fileNewImageName));
+                        uploadedNewNameImages.Add(fileNewImageName);
                     }
                 }
 
                 Database db = new Database();
 
-                // Add client's request.
-                /*object requestId = db.ExecuteScalar("insert into Request (LeadFirstName, LeadLastName, LeadEmail, LeadPhoneNumber, LeadZipCode, Origin, CreatedBy) output inserted.RequestId values (@1, @2, @3, @4, @5, @6, 0)",
-                    new object[] { request.FirstName,
-                    request.LastName,
-                    request.Email,
-                    request.PhoneNumber.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""),
-                    request.ZipCode,
-                    "WEB" });*/
+                // Get selected CarMMY id
+                object carMMYId = db.ExecuteScalar("select CarMMYId from CarMMY where CarModel = @1 and CarYear = @2 and Active =1",
+                    new object[] { request.SelectedCarModelId, request.SelectedCarYearId });
 
-                int requestId = db.ExecuteSP("usp_InsertLead",
+                // Add lead.
+                int leadId = db.ExecuteSP("usp_InsertLead",
                     new string[] { "FirstName", "LastName", "Email", "PhoneNumber", "ZipCode", "LeadStatus", "Origin", "CreatedBy" },
                     new object[] { request.FirstName,
                     request.LastName,
@@ -57,12 +99,29 @@ namespace Fyxme.Controllers
                     "WEB",
                     0}, "LeadId");
 
-                
-
                 // Add case.
-                /*.Execute("insert into [Case] (RequestId, CarRank, CarMMYId, CarDesc, CaseStatus, ManagerId, CreatedBy) values (@1, 1, 1, @2, 1, 0, 0)",
-                    new object[] { Convert.ToInt32(requestId),
-                    request.DamageDescription });*/
+                int caseId = db.ExecuteSP("usp_InsertCase",
+                    new string[] { "LeadId", "CarRank", "CarMMYId", "DamageDesc", "CaseStatus", "ManagerId", "CreatedBy" },
+                    new object[] { leadId, 1,
+                    (int)carMMYId,
+                    request.DamageDescription,
+                    1,
+                    0,
+                    0}, "CaseId");
+
+                // Add pictures
+                int picRank = 1;
+                foreach (string uploadedImage in uploadedNewNameImages)
+                {
+                    int picId = db.ExecuteSP("usp_InsertPicture",
+                        new string[] { "CaseId", "PictureRank", "PictureName", "PictureLocation", "CreatedBy" },
+                        new object[] { caseId, picRank,
+                        uploadedImage,
+                        uploadDirImages,
+                        0}, "PictureId");
+
+                    picRank++;
+                }
 
                 db.Close();
 
@@ -78,20 +137,61 @@ namespace Fyxme.Controllers
             return View();
         }
 
-        /*private void GetOrigin()
+        [HttpPost]
+        public ActionResult UpdateCarModels()
         {
-            HttpBrowserCapabilities browserCap;
-            if (((HttpCapabilitiesBase)browserCap).IsMobileDevice)
+            Database db = new Database();
+
+            // Get list of car models filtered by car brand selected
+            SqlDataReader sdrCarModels;
+
+            if (Request["value"].ToString() != "")
             {
-                labelText = "Browser is a mobile device.";
+                sdrCarModels = db.GetData("select distinct upper(CarModel) CarModel from CarMMY where CarMake = '" + Request["value"].ToString() + "' and Active = 1 order by 1");
             }
             else
             {
-                labelText = "Browser is not a mobile device.";
+                sdrCarModels = db.GetData("select distinct upper(CarModel) CarModel from CarMMY where Active = 1 order by 1");
+            }
+            
+            // Add default option
+            string ddListCarModelsHTML = "<option>Car Model</option>";
+
+            while (sdrCarModels.Read())
+            {
+                // Add option
+                string option = String.Concat("<option value='", sdrCarModels["CarModel"].ToString(), "'>", sdrCarModels["CarModel"].ToString(), "</option>");
+                ddListCarModelsHTML += option;
             }
 
-            Label1.Text = labelText;
-        }*/
+            sdrCarModels.Close();
+            db.Close();
 
+            return Content(String.Join("", ddListCarModelsHTML));
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCarYears()
+        {
+            Database db = new Database();
+
+            // Get list of car models filtered by car brand selected
+            SqlDataReader sdrCarYears = db.GetData("select distinct CarYear from CarMMY where CarModel = '" + Request["value"].ToString() + "' order by 1");
+
+            // Add default option
+            string ddListCarYearsHTML = "<option>Car Year</option>";
+
+            while (sdrCarYears.Read())
+            {
+                // Add option
+                string option = String.Concat("<option value='", sdrCarYears["CarYear"].ToString(), "'>", sdrCarYears["CarYear"].ToString(), "</option>");
+                ddListCarYearsHTML += option;
+            }
+
+            sdrCarYears.Close();
+            db.Close();
+
+            return Content(String.Join("", ddListCarYearsHTML));
+        }
     }
 }

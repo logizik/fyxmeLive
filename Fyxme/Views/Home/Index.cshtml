@@ -128,15 +128,27 @@
                                                 @Html.ValidationMessageFor(model => model.ZipCode, null, new { @class = "field-validation-error" })
                                             </div>
                                             <div id="spacer-input">
-                                                @Html.TextAreaFor(model => model.DamageDescription, new { @class = "textarea", placeholder = "Damage Description (Optional)", id = "txtDamageDesc_01" } )
+                                                @Html.DropDownListFor(model => model.SelectedCarMakerId, new SelectList(Model.DDListCarMakers, "Value", "Text"), new { @Id = "cboCarMakers", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarModels', this.value, 'cboCarModels')" })
+                                            </div>
+                                            <div id="spacer-input">
+                                                @Html.DropDownListFor(model => model.SelectedCarModelId, new SelectList(Model.DDListCarModels, "Value", "Text"), new { @Id = "cboCarModels", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarYears', this.value, 'cboCarYears')" })
+                                                @Html.ValidationMessageFor(model => model.SelectedCarModelId, null, new { @class = "field-validation-error" })
+                                            </div>
+                                            <div id="spacer-input">
+                                                @Html.DropDownListFor(model => model.SelectedCarYearId, new SelectList(Model.DDListCarYears, "Value", "Text"), new { @Id = "cboCarYears", @class = "textbox" })
+                                                @Html.ValidationMessageFor(model => model.SelectedCarYearId, null, new { @class = "field-validation-error" })
+                                            </div>
+                                             <div id="spacer-input">
+                                                @Html.TextAreaFor(model => model.DamageDescription, new { @class = "textarea", placeholder = "Damage Description (Optional)", id = "txtDamageDesc_01" })
                                                 @Html.ValidationMessageFor(model => model.DamageDescription, null, new { @class = "field-validation-error" })
                                                 <div class="characters-available" id="damageDescCharactersLeft_01"><span>500</span> charaters available</div>
                                             </div>
                                             <div class="text-item-small">By submitting my request for a quote, I agree that Fyxme or its representatives may contact me by email, phone, or text message at the email address or telephone number I provided.</div>
-                                            <div style="text-align:left;margin-bottom:16px;">
-                                                <button id="btnSubmit" class="btn-upload" type="submit">Submit</button>
+                                                <div style="text-align:left;margin-bottom:16px;">
+                                                    <button id="btnSubmit" class="btn-upload" type="submit">Submit</button>
+                                                </div>
                                             </div>
-                                        </div>
+
                                     }
 
                                 </div>
@@ -364,3 +376,18 @@
         </div>
     </div>
     <!-- End -->
+
+<script>
+
+    function ddlUpdateValues(controller, value, object)
+    {
+        $.ajax({
+            url: controller,
+            type: 'post',
+            data: { value: value }
+        }).done(function (response) {
+            $("#" + object).html(response);
+        });
+    }
+
+</script>

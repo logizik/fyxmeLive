@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
-using System.Linq;
 using Fyxme.Models;
 
 namespace Fyxme.Controllers
@@ -117,14 +115,61 @@ namespace Fyxme.Controllers
                         new string[] { "CaseId", "PictureRank", "PictureName", "PictureLocation", "CreatedBy" },
                         new object[] { caseId, picRank,
                         uploadedImage,
-                        "need to be fix to 255 caracters",
-                        //uploadDirImages,
+                        uploadDirImages,
                         0}, "PictureId");
 
                     picRank++;
                 }
 
                 db.Close();
+
+                // Send email to client
+                Email email = new Email(WebConfigurationManager.AppSettings["EmailSmtpHost"].ToString());
+
+                // Get email default config parameters
+                email.From = WebConfigurationManager.AppSettings["EmailFrom"].ToString();
+                email.Port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"].ToString());
+                email.NetworkCredentialUser = WebConfigurationManager.AppSettings["EmailNetworkCredentialUser"].ToString();
+                email.NetworkCredentialPassword = WebConfigurationManager.AppSettings["EmailNetworkCredentialPassword"].ToString();
+
+                email.To = request.Email;
+                email.Subject = "We've received your request! - Fyxme.com";
+
+                email.Body = String.Format(@"<body bgcolor='#f6f6f6'>
+                    <table class='body-wrap' bgcolor='#f6f6f6'>
+                    <tr>
+                    <td></td>
+                    <td class='container' bgcolor='#FFFFFF'>
+                    <div class='content'>
+                    <table>
+                    <tr>
+                    <td>
+                    <h2>We've received your request!</h2>
+                    <p>Hi {0} {1},</p>
+                    <p>We appreciate you taking the time to submit your information and are committed to providing you with an easy and seamless car repair experience.</p>
+                    <p>We will be following up with you shortly with your quote and car technician details.You can be assured of receiving a premium service at a very competitive price.</p>
+                    <p>Should you decide to move forward with our service, a mobile car technician will come directly to you, at home or work and on your own schedule.</p>
+                    <p>Below you will find the details of your request.</p>
+                    <h6>Your Email:</h6>
+                    <p>{2}</p>
+                    <h6>Your Case Number:</h6>
+                    <p>{3}</p>
+                    <h6>Your Phone Number:</h6>
+                    <p>{4}</p>
+                    <h6>Description:</h6>
+                    <p>{5}</p>
+                    <p>Thanks, have a lovely day.</p>
+                    </td>
+                    </tr>
+                    </table>
+                    </div>
+                    </td>
+                    <td></td>
+                    </tr>
+                    </table>
+                    </body>", request.FirstName, request.LastName, request.Email, leadId, request.PhoneNumber, request.DamageDescription);
+
+                email.Send();
 
                 // Redirect to confirmation view.
                 return RedirectToAction("RequestSent");

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using System.IO;
 using Fyxme.Models;
 
 namespace Fyxme.Controllers
@@ -111,7 +112,7 @@ namespace Fyxme.Controllers
                 int picRank = 1;
                 foreach (string uploadedImage in uploadedNewNameImages)
                 {
-                    int picId = db.ExecuteSP("usp_InsertPicture",
+                    int picId = db.ExecuteSP("usp_InsertCasePicture",
                         new string[] { "CaseId", "PictureRank", "PictureName", "PictureLocation", "CreatedBy" },
                         new object[] { caseId, picRank,
                         uploadedImage,
@@ -135,39 +136,22 @@ namespace Fyxme.Controllers
                 email.To = request.Email;
                 email.Subject = "We've received your request! - Fyxme.com";
 
-                email.Body = String.Format(@"<body bgcolor='#f6f6f6'>
-                    <table class='body-wrap' bgcolor='#f6f6f6'>
-                    <tr>
-                    <td></td>
-                    <td class='container' bgcolor='#FFFFFF'>
-                    <div class='content'>
-                    <table>
-                    <tr>
-                    <td>
-                    <h2>We've received your request!</h2>
-                    <p>Hi {0} {1},</p>
-                    <p>We appreciate you taking the time to submit your information and are committed to providing you with an easy and seamless car repair experience.</p>
-                    <p>We will be following up with you shortly with your quote and car technician details.You can be assured of receiving a premium service at a very competitive price.</p>
-                    <p>Should you decide to move forward with our service, a mobile car technician will come directly to you, at home or work and on your own schedule.</p>
-                    <p>Below you will find the details of your request.</p>
-                    <h6>Your Email:</h6>
-                    <p>{2}</p>
-                    <h6>Your Case Number:</h6>
-                    <p>{3}</p>
-                    <h6>Your Phone Number:</h6>
-                    <p>{4}</p>
-                    <h6>Description:</h6>
-                    <p>{5}</p>
-                    <p>Thanks, have a lovely day.</p>
-                    </td>
-                    </tr>
-                    </table>
-                    </div>
-                    </td>
-                    <td></td>
-                    </tr>
-                    </table>
-                    </body>", request.FirstName, request.LastName, request.Email, leadId, request.PhoneNumber, request.DamageDescription);
+                // Get HTML template for Lead Request Received confirmation
+                StreamReader sr = new StreamReader(Server.MapPath("~/Content/MailTemplates/MailSendLeadConfirmRequestReceived.html"));
+                string htmlMailTemplate = sr.ReadToEnd();
+
+                /*email.Body = String.Format(htmlMailTemplate,
+                    Server.MapPath("~/Content/Images/fyxmy_logo_poster_.png"), request.FirstName, request.LastName, caseId.ToString(), request.Email, request.PhoneNumber, request.DamageDescription);*/
+
+                htmlMailTemplate = htmlMailTemplate.Replace("{0}", Server.MapPath("~/Content/Images/fyxmy_logo_poster_.png"));
+                htmlMailTemplate = htmlMailTemplate.Replace("{1}", request.FirstName);
+                htmlMailTemplate = htmlMailTemplate.Replace("{2}", request.LastName);
+                htmlMailTemplate = htmlMailTemplate.Replace("{3}", caseId.ToString());
+                htmlMailTemplate = htmlMailTemplate.Replace("{4}", request.Email);
+                htmlMailTemplate = htmlMailTemplate.Replace("{5}", request.PhoneNumber);
+                htmlMailTemplate = htmlMailTemplate.Replace("{6}", request.DamageDescription);
+
+                email.Body = htmlMailTemplate;
 
                 email.Send();
 

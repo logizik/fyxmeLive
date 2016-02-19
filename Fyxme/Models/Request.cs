@@ -43,7 +43,6 @@ namespace Fyxme.Models
         public string SelectedCarYearId { get; set; }
         public IEnumerable<SelectListItem> DDListCarYears { get; set; }
 
-
         public List<HttpPostedFileBase> UploadedCarImages { get; set; }
 
         [MaxLength(500, ErrorMessage = "The damage description can't exceed 500 caracters")]

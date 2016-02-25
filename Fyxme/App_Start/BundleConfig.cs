@@ -24,7 +24,8 @@ namespace Fyxme
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js.scripts").Include(
-                      "~/Scripts/page.home.js"));
+                      "~/Scripts/page.home.js",
+                      "~/Scripts/jquery.modal.js"));
 
             // jquery.bxslider
             bundles.Add(new ScriptBundle("~/bundles/bxslider").Include(

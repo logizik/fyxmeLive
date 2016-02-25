@@ -35,6 +35,7 @@ namespace Fyxme.Models
             mail.Body = this.Body;
 
             SmtpServer.Port = this.Port;
+            //SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Credentials = new System.Net.NetworkCredential(this.NetworkCredentialUser, this.NetworkCredentialPassword);
 
             this.SmtpServer.Send(this.mail);

@@ -289,6 +289,7 @@
     <Content Include="Content\Images\winner_ico.png" />
     <Content Include="Content\Images\winner_ico_2x.png" />
     <Content Include="Content\Css\jquery.bxslider.css" />
+    <Content Include="Content\MailTemplates\MailSendAdminConfirmRequestReceived.html" />
     <Content Include="Content\MailTemplates\MailSendLeadConfirmRequestReceived.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -302,6 +303,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery.modal.js" />
     <Content Include="Scripts\page.home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

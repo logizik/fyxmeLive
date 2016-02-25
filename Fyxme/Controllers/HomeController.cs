@@ -143,16 +143,47 @@ namespace Fyxme.Controllers
                 /*email.Body = String.Format(htmlMailTemplate,
                     Server.MapPath("~/Content/Images/fyxmy_logo_poster_.png"), request.FirstName, request.LastName, caseId.ToString(), request.Email, request.PhoneNumber, request.DamageDescription);*/
 
-                htmlMailTemplate = htmlMailTemplate.Replace("{0}", Server.MapPath("~/Content/Images/fyxmy_logo_poster_.png"));
-                htmlMailTemplate = htmlMailTemplate.Replace("{1}", request.FirstName);
-                htmlMailTemplate = htmlMailTemplate.Replace("{2}", request.LastName);
+                //htmlMailTemplate = htmlMailTemplate.Replace("{0}", Server.MapPath("~/Content/Images/fyxmy_logo_poster_.png"));
+                htmlMailTemplate = htmlMailTemplate.Replace("{0}", "http://www.fyxme.com/images/fyxmy_logo_poster_.png");
+                htmlMailTemplate = htmlMailTemplate.Replace("{1}", request.FirstName.ToUpper());
+                htmlMailTemplate = htmlMailTemplate.Replace("{2}", request.LastName.ToUpper());
                 htmlMailTemplate = htmlMailTemplate.Replace("{3}", caseId.ToString());
                 htmlMailTemplate = htmlMailTemplate.Replace("{4}", request.Email);
                 htmlMailTemplate = htmlMailTemplate.Replace("{5}", request.PhoneNumber);
                 htmlMailTemplate = htmlMailTemplate.Replace("{6}", request.DamageDescription);
 
                 email.Body = htmlMailTemplate;
+                email.Send();
 
+                // Send email to fyxme admin
+                // Get HTML template for Admin Request Received confirmation
+                sr = new StreamReader(Server.MapPath("~/Content/MailTemplates/MailSendAdminConfirmRequestReceived.html"));
+                htmlMailTemplate = sr.ReadToEnd();
+
+                email.To = WebConfigurationManager.AppSettings["EmailAdmin"].ToString();
+                email.Subject = "You've received a new request! - Fyxme.com";
+
+                htmlMailTemplate = htmlMailTemplate.Replace("{0}", "http://www.fyxme.com/images/fyxmy_logo_poster_.png");
+                htmlMailTemplate = htmlMailTemplate.Replace("{1}", caseId.ToString());
+                htmlMailTemplate = htmlMailTemplate.Replace("{2}", request.FirstName.ToUpper());
+                htmlMailTemplate = htmlMailTemplate.Replace("{3}", request.LastName.ToUpper());
+                htmlMailTemplate = htmlMailTemplate.Replace("{4}", request.Email);
+                htmlMailTemplate = htmlMailTemplate.Replace("{5}", request.PhoneNumber);
+                htmlMailTemplate = htmlMailTemplate.Replace("{6}", request.ZipCode);
+                htmlMailTemplate = htmlMailTemplate.Replace("{7}", request.SelectedCarMakerId);
+                htmlMailTemplate = htmlMailTemplate.Replace("{8}", request.SelectedCarModelId);
+                htmlMailTemplate = htmlMailTemplate.Replace("{9}", request.SelectedCarYearId);
+                htmlMailTemplate = htmlMailTemplate.Replace("{10}", request.DamageDescription);
+
+                string pics = "";
+                foreach (string uploadedImage in uploadedNewNameImages)
+                {
+                    pics += "<a href='http://" + Request.Url.Authority + "/Content/Upload/Pictures/" + uploadedImage + "'>http://" + Request.Url.Authority + "/Content/Upload/Pictures/" + uploadedImage + " </a><br/>";
+                }
+
+                htmlMailTemplate = htmlMailTemplate.Replace("{11}", pics);
+
+                email.Body = htmlMailTemplate;
                 email.Send();
 
                 // Redirect to confirmation view.
@@ -164,6 +195,8 @@ namespace Fyxme.Controllers
 
         public ActionResult RequestSent()
         {
+            //ViewBag.RequestSent = true;
+
             return View();
         }
 

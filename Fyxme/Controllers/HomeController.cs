@@ -95,7 +95,7 @@ namespace Fyxme.Controllers
                     request.PhoneNumber.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""),
                     request.ZipCode,
                     0,
-                    "WEB",
+                    "Fyxme Web Site",
                     0}, "LeadId");
 
                 // Add case.
@@ -201,7 +201,7 @@ namespace Fyxme.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateCarModels()
+        public JsonResult UpdateCarModels()
         {
             Database db = new Database();
 
@@ -216,25 +216,25 @@ namespace Fyxme.Controllers
             {
                 sdrCarModels = db.GetData("select distinct upper(CarModel) CarModel from CarMMY where Active = 1 order by 1");
             }
-            
-            // Add default option
-            string ddListCarModelsHTML = "<option>Car Model</option>";
 
+            // Add default option
+            List<SelectListItem> carModels = new List<SelectListItem>();
+            carModels.Add(new SelectListItem { Text = "Car Model" });
+
+            // Add list options
             while (sdrCarModels.Read())
             {
-                // Add option
-                string option = String.Concat("<option value='", sdrCarModels["CarModel"].ToString(), "'>", sdrCarModels["CarModel"].ToString(), "</option>");
-                ddListCarModelsHTML += option;
+                carModels.Add(new SelectListItem { Value = sdrCarModels["CarModel"].ToString(), Text = sdrCarModels["CarModel"].ToString() });
             }
-
+            
             sdrCarModels.Close();
             db.Close();
 
-            return Content(String.Join("", ddListCarModelsHTML));
+            return this.Json(carModels);
         }
 
         [HttpPost]
-        public ActionResult UpdateCarYears()
+        public JsonResult UpdateCarYears()
         {
             Database db = new Database();
 
@@ -242,19 +242,19 @@ namespace Fyxme.Controllers
             SqlDataReader sdrCarYears = db.GetData("select distinct CarYear from CarMMY where CarModel = '" + Request["value"].ToString() + "' order by 1");
 
             // Add default option
-            string ddListCarYearsHTML = "<option>Car Year</option>";
+            List<SelectListItem> carYears = new List<SelectListItem>();
+            carYears.Add(new SelectListItem { Text = "Car Year" });
 
+            // Add list options
             while (sdrCarYears.Read())
             {
-                // Add option
-                string option = String.Concat("<option value='", sdrCarYears["CarYear"].ToString(), "'>", sdrCarYears["CarYear"].ToString(), "</option>");
-                ddListCarYearsHTML += option;
+                carYears.Add(new SelectListItem { Value = sdrCarYears["CarYear"].ToString(), Text = sdrCarYears["CarYear"].ToString() });
             }
 
             sdrCarYears.Close();
             db.Close();
 
-            return Content(String.Join("", ddListCarYearsHTML));
+            return this.Json(carYears);
         }
     }
 }

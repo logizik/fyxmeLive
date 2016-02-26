@@ -393,9 +393,26 @@
         $.ajax({
             url: controller,
             type: 'post',
+            dataType: "json",
             data: { value: value }
         }).done(function (response) {
-            $("#" + object).html(response);
+            $("#" + object).empty();
+            var i = 1;
+            $.each(response, function (index, item) {
+                if (i == 1) {
+                    $("#" + object).append(
+                        $("<option></option>")
+                            .attr("value", "")
+                          .text(item.Text));
+                }
+                else {
+                    $("#" + object).append(
+                        $("<option></option>")
+                          .attr("value", item.Value)
+                          .text(item.Text));
+                }
+                i++;
+            });
         });
     }
 

@@ -10,14 +10,21 @@
 
 
     <title>@ViewBag.Title - Fyxme</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/bxslider")
-    @Scripts.Render("~/bundles/js.scripts")
+    <link href='@Url.Content("~/Content/Css/bootstrap.css")' rel='stylesheet' type='text/css'>
+    <link href='@Url.Content("~/Content/Css/site.css")' rel='stylesheet' type='text/css'>
+    <link href='@Url.Content("~/Content/Css/jquery.bxslider.css")' rel='stylesheet' type='text/css'>
 
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Scripts/respond.js")"></script>
+    <script src="@Url.Content("~/Scripts/page.home.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.bxslider.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.validate-vsdoc.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
 
     <!-- Google fonts -->
     <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>

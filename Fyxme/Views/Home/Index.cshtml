@@ -97,7 +97,7 @@
                                                 @Html.TextBoxFor(model => model.ZipCode, new { @class = "textbox", placeholder = "Zip Code" })
                                                 @Html.ValidationMessageFor(model => model.ZipCode, null, new { @class = "field-validation-error" })
                                             </div>
-                                            <div class="text-item">Upload Photo(s)</div>
+                                            <!--<div class="text-item">Upload Photo(s)</div>-->
                                             <div id="upload_pic_1">
                                                 <div class="u-file"><input id="txtUFile1" name="txtUFile1" type="file" onchange="$('#txtUploadPic1').val(this.value.split('\\').pop().split('/').pop());"></div>
                                                 <input type="text" id="txtUploadPic1" name="txtUploadPic1" class="textbox" placeholder="Select a photo to upload" />

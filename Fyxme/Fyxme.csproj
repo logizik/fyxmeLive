@@ -195,6 +195,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\Admin.cs" />
     <Compile Include="Controllers\Old\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Old\ManageController.cs" />
@@ -203,6 +204,7 @@
     </Compile>
     <Compile Include="Models\CarMMY.cs" />
     <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\LoginForm.cs" />
     <Compile Include="Models\Old\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Old\IdentityModels.cs" />
@@ -212,6 +214,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Css\Admin.css" />
     <Content Include="Content\Css\bootstrap.css" />
     <Content Include="Content\Css\bootstrap.min.css" />
     <Content Include="Content\Images\2015-11-15 024052.jpg" />
@@ -219,6 +222,8 @@
     <Content Include="Content\Images\2015-11-15%2520024013.jpg" />
     <Content Include="Content\Images\2015-11-15%2520024052.jpg" />
     <Content Include="Content\Images\2015-11-15%2520032257_mod.jpg" />
+    <Content Include="Content\Images\Admin\ico_pwd.png" />
+    <Content Include="Content\Images\Admin\ico_user.png" />
     <Content Include="Content\Images\arrow_left.png" />
     <Content Include="Content\Images\arrow_right.png" />
     <Content Include="Content\Images\bodyshop_ico.png" />
@@ -302,6 +307,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\fyxme.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery.modal.js" />
     <Content Include="Scripts\page.home.js" />
@@ -336,7 +342,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Loginaaa.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -350,6 +356,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminLogin.cshtml" />
+    <Content Include="Views\Admin\Case.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

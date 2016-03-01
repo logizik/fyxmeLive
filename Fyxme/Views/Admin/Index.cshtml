@@ -1,0 +1,42 @@
+﻿@model Fyxme.Models.LoginForm
+
+@{
+    ViewBag.Title = "Admin - Login";
+}
+
+<!-- Banner -->
+<div id="top-banner">Fyxme <span>ADMIN</span></div>
+
+<!-- Login form -->
+<div class="container>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+            {
+                <div class="login-text col-center">
+                    Login
+                </div>
+                <div class="textbox-login-row col-center">
+                    <div class="ico-login"><img src="@Url.Content("~/Content/Images/Admin/ico_user.png")" /></div>
+                    <div>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "textbox-login", placeholder = "Username" })
+                        @Html.ValidationMessageFor(model => model.Username, null, new { @class = "field-validation-error" })
+                    </div>
+                </div>
+                <div class="textbox-login-row col-center">
+                    <div class="ico-login"><img src="@Url.Content("~/Content/Images/Admin/ico_pwd.png")" /></div>
+                    <div>
+                        @Html.PasswordFor(model => model.Password, new { @class = "textbox-login", placeholder = "Password" })
+                        @Html.ValidationMessageFor(model => model.Password, null, new { @class = "field-validation-error" })
+                    </div>
+                </div>
+                <div class="password-forgot col-center">
+                    <div><a href="">Forgot password?</a></div>
+                </div>
+                <div class="btn-login col-center">
+                    <button id="btnLogin" class="btn-default-blue" type="submit">Log in</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

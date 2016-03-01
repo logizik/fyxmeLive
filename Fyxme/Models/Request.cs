@@ -8,8 +8,6 @@ namespace Fyxme.Models
 {
     public class Request
     {
-        public int RequestId { get; set; }
-
         [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
 

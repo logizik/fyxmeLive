@@ -230,6 +230,10 @@
     <Content Include="Content\Images\Admin\ico_settings.png" />
     <Content Include="Content\Images\Admin\ico_technicians.png" />
     <Content Include="Content\Images\Admin\ico_user.png" />
+    <Content Include="Content\Images\Admin\temp\car1.jpg" />
+    <Content Include="Content\Images\Admin\temp\car2.jpg" />
+    <Content Include="Content\Images\Admin\temp\car3.jpg" />
+    <Content Include="Content\Images\Admin\temp\car4.png" />
     <Content Include="Content\Images\arrow_left.png" />
     <Content Include="Content\Images\arrow_right.png" />
     <Content Include="Content\Images\bodyshop_ico.png" />

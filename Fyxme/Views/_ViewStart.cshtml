@@ -1,7 +1,13 @@
 ﻿@{
     var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
-    if (controller == "Admin") {
+    var action = HttpContext.Current.Request.RequestContext.RouteData.Values["Action"].ToString();
+    /*if (controller == "Admin" && action == "Index")
+    {
         Layout = "~/Views/Shared/_LayoutAdminLogin.cshtml";
+    }*/
+    if (controller == "Admin")
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     }
     else
     {

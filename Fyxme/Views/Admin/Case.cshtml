@@ -3,5 +3,48 @@
     ViewBag.Title = "Admin - Cases";
 }
 
-<h2>Case</h2>
+<div class="container">
+    <div class="row item-box-top">
+        <div class="col-md-6">
+            <div>
+                <select>
+                    <option value="">-- Sort by --</option>
+                    <option value="">Newest</option>
+                    <option value="">Oldest</option>
+                    <option value="">Alphabetical</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="item-find"><input type="text" class="textbox-search" placeholder="Find cases..." /></div>
+            <div class="item-search-btn"><img src="@Url.Content("~/Content/Images/Admin/ico_search.png")" width="20" height="20" /></div>
+        </div>
+    </div>
+    <div class="row item-box">
+        <div class="col-md-4">
+            <div class="left"><img src="@Url.Content("~/Content/Images/Admin/temp/car1.jpg")" width="50" height="50" class="iten-img-circle" /></div>
+            <div class="item-client-info left">
+                <div class="item-client-name">Ghislain Tremblay</div>
+                <div class="item-label">tghis@hotmail.com</div>
+                <div class="item-label">514 502-1015</div>
+                <div class="item-label">J3L 0S9</div>
+                <div class="item-label top-spacer">Case <b>#522554</b></div>
+                <div class="item-label-small">Status <b>New</b></div>
+                <div class="item-label-small">Added on 11/23/14 12:20PM</div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="item-description">
+                <div class="item-label"><b>Honda Civic CX 2009</b></div>
+                <div class="item-label top-spacer">This is a description this is a description this is a description this is deudhe dieidieidiejijdiedjedij eded a description this is a description this i deojdojeojdojeojd oeodoeodjoejddojeo dejdedede</div>
+                <div class="item-cars">
+                    <div class="item-car-pic left"><img src="@Url.Content("~/Content/Images/Admin/temp/car1.jpg")" height="50" /></div>
+                    <div class="item-car-pic left"><img src="@Url.Content("~/Content/Images/Admin/temp/car2.jpg")" height="50" /></div>
+                    <div class="item-car-pic left"><img src="@Url.Content("~/Content/Images/Admin/temp/car3.jpg")" height="50" /></div>
+                    <div><img src="@Url.Content("~/Content/Images/Admin/temp/car4.png")" height="50" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

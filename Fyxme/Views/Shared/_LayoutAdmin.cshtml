@@ -31,8 +31,22 @@
 
 </head>
 <body>
+    @{
+        var action = ViewContext.RouteData.GetRequiredString("action");
+    }
 
-@RenderBody()
+    @if (action == "Index")
+    {
+        // Login
+        Html.RenderPartial("_LayoutPartialAdminlLogin");
+    }
+    else
+    {
+        // Admin pages
+        Html.RenderPartial("_LayoutPartialAdminTop");
+    }
+
+    @RenderBody()
 
 </body>
 </html>

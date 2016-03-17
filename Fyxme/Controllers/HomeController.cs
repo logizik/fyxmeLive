@@ -6,11 +6,15 @@ using System.Web.Configuration;
 using System.Web.Mvc;
 using System.IO;
 using Fyxme.Models;
+using fyxme.Data.Model;
+using fyxme.Data.Entities;
 
 namespace Fyxme.Controllers
 {
     public class HomeController : Controller
     {
+        private cmRepository cmRepo = new cmRepository();
+
         public static List<CarMMY> carsMMYY = new List<CarMMY>();
 
         public ActionResult Index()
@@ -18,17 +22,16 @@ namespace Fyxme.Controllers
             Database db = new Database();
 
             // Get list of distinct car makers
-            SqlDataReader sdrCarMakers = db.GetData("select distinct upper(CarMake) CarMake from CarMMY where Active = 1 order by 1");
+            var carMakes = cmRepo.GetCarMakes();
 
             List<SelectListItem> carMakers = new List<SelectListItem>();
             carMakers.Add(new SelectListItem { Text = "Car Brand" });
 
-            while (sdrCarMakers.Read())
+            foreach (var carMake in carMakes)
             {
-                carMakers.Add(new SelectListItem { Value = sdrCarMakers["CarMake"].ToString(), Text = sdrCarMakers["CarMake"].ToString() });
+                string text = carMake.GetType().GetProperty("CarMake").GetValue(carMake).ToString();
+                carMakers.Add(new SelectListItem { Value = text, Text = text });
             }
-
-            sdrCarMakers.Close();
 
             // Get list of distinct car models
             SqlDataReader sdrCarModels = db.GetData("select distinct upper(CarModel) CarModel from CarMMY where Active = 1 order by 1");
@@ -81,47 +84,62 @@ namespace Fyxme.Controllers
                     }
                 }
 
+                
+
+
+
+
+
                 Database db = new Database();
 
                 // Get selected CarMMY id
                 object carMMYId = db.ExecuteScalar("select CarMMYId from CarMMY where CarModel = @1 and CarYear = @2 and Active =1",
                     new object[] { request.SelectedCarModelId, request.SelectedCarYearId });
 
-                // Add lead.
-                int leadId = db.ExecuteSP("usp_InsertLead",
-                    new string[] { "FirstName", "LastName", "Email", "PhoneNumber", "ZipCode", "LeadStatus", "Origin", "CreatedBy" },
-                    new object[] { request.FirstName,
-                    request.LastName,
-                    request.Email,
-                    request.PhoneNumber.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""),
-                    request.ZipCode,
-                    0,
-                    "Fyxme Web Site",
-                    0}, "LeadId");
+                // Add lead object
+                // Lead
+                Lead l = new Lead();
+                l.FirstName = request.FirstName;
+                l.LastName = request.LastName;
+                l.Email = request.Email;
+                l.PhoneNumber = request.PhoneNumber;
+                l.ZipCode = request.ZipCode;
+                l.StatusId = (int)EStatus.Received;     // Default status
+                l.Origin = "Fyxme Website";             // Default origin
+                l.CreatedBy = 999;                      // Added by customer
+                
+                // Case
+                Case c = new Case();
+                c.CarMMYId = (int)carMMYId;
+                c.CaseDesc = request.DamageDescription;
+                c.StatusId = (int)EStatus.Received;
+                c.SalesRepId = 0;
+                c.CreatedBy = 999;                      // Added by customer
 
-                // Add case.
-                int caseId = db.ExecuteSP("usp_InsertCase",
-                    new string[] { "LeadId", "CarRank", "CarMMYId", "DamageDesc", "CaseStatus", "ManagerId", "CreatedBy" },
-                    new object[] { leadId, 1,
-                    (int)carMMYId,
-                    String.IsNullOrEmpty(request.DamageDescription) ? "" : request.DamageDescription,
-                    1,
-                    0,
-                    0}, "CaseId");
-
-                // Add pictures
+                // Case pictures
                 int picRank = 1;
+                List<CasePicture> cp = new List<CasePicture>();
+
                 foreach (string uploadedImage in uploadedNewNameImages)
                 {
-                    int picId = db.ExecuteSP("usp_InsertCasePicture",
-                        new string[] { "CaseId", "PictureRank", "PictureName", "PictureLocation", "CreatedBy" },
-                        new object[] { caseId, picRank,
-                        uploadedImage,
-                        uploadDirImages,
-                        0}, "PictureId");
+                    CasePicture casePic = new CasePicture()
+                    {
+                        PictureRank = (byte)picRank,
+                        PictureName = uploadedImage,
+                        PictureLocation = uploadDirImages,
+                        CreatedBy = 999,
+                    };
 
+                    cp.Add(casePic);
                     picRank++;
                 }
+
+                c.CasePictures = cp;
+                l.Cases.Add(c);
+
+                // Save lead object and get CaseId
+                long caseId = cmRepo.AddLead(l);
+
 
                 db.Close();
 

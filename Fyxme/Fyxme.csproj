@@ -199,11 +199,30 @@
     <Compile Include="Controllers\Old\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Old\ManageController.cs" />
+    <Compile Include="DataConfig\CarMMYConfiguration.cs" />
+    <Compile Include="DataConfig\CaseConfiguration.cs" />
+    <Compile Include="DataConfig\CaseNoteConfiguration.cs" />
+    <Compile Include="DataConfig\CasePictureConfiguration.cs" />
+    <Compile Include="DataConfig\LeadConfiguration.cs" />
+    <Compile Include="DataConfig\StatusConfiguration.cs" />
+    <Compile Include="Data\cmRepository.cs" />
+    <Compile Include="Data\fyxmeContext.cs" />
+    <Compile Include="Data\ILeadManagementRepository.cs" />
+    <Compile Include="Data\InitialDatabaseSeed.cs" />
+    <Compile Include="Data\LeadManagementRepository.cs" />
+    <Compile Include="Data\RecentCasesViewModel.cs" />
+    <Compile Include="Entities\CarMMY.cs" />
+    <Compile Include="Entities\Case.cs" />
+    <Compile Include="Entities\CaseNote.cs" />
+    <Compile Include="Entities\CasePicture.cs" />
+    <Compile Include="Entities\IModificationHistory.cs" />
+    <Compile Include="Entities\Lead.cs" />
+    <Compile Include="Entities\Status.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CarMMY.cs" />
     <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginForm.cs" />
     <Compile Include="Models\Old\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />

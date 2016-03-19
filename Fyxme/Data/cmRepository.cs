@@ -15,7 +15,10 @@ namespace fyxme.Data.Model
     public class cmRepository
     {
 
-        // Car MMY
+        /// <summary>
+        /// GetCarMakers
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable GetCarMakes()
         {
             using (var context = new fyxmeContext())
@@ -28,19 +31,87 @@ namespace fyxme.Data.Model
             }
         }
 
-        // Car Models
-
-        // Car Years
-
-        // Add Lead from web form
-        public long AddLead(Lead l)
+        /// <summary>
+        /// GetCarModels
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable GetCarModels()
         {
             using (var context = new fyxmeContext())
             {
-                context.Leads.Add(l);
+                return context.CarMMYs.AsNoTracking()
+                    .Where(c => c.Active == true)
+                    .Select(c => new { c.CarModel }).Distinct()
+                    .OrderBy(c => c.CarModel)
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// GetCarModels
+        /// </summary>
+        /// <param name="carMake"></param>
+        /// <returns></returns>
+        public IEnumerable GetCarModels(string carMake)
+        {
+            using (var context = new fyxmeContext())
+            {
+                return context.CarMMYs.AsNoTracking()
+                    .Where(c => c.Active == true && c.CarMake == carMake)
+                    .Select(c => new { c.CarModel }).Distinct()
+                    .OrderBy(c => c.CarModel)
+                    .ToList();
+            }
+        }
+
+
+        /// <summary>
+        /// GetCarYears
+        /// </summary>
+        /// <param name="carModel"></param>
+        /// <returns></returns>
+        public IEnumerable GetCarYears(string carModel)
+        {
+            using (var context = new fyxmeContext())
+            {
+                return context.CarMMYs.AsNoTracking()
+                    .Where(c => c.Active == true && c.CarModel == carModel)
+                    .Select(c => new { c.CarYear }).Distinct()
+                    .OrderBy(c => c.CarYear)
+                    .ToList();
+            }
+        }
+
+        /// <summary>
+        /// GetCarMMYId
+        /// </summary>
+        /// <param name="carModel"></param>
+        /// <param name="carYear"></param>
+        /// <returns></returns>
+        public int GetCarMMYId(string carModel, int carYear)
+        {
+            using (var context = new fyxmeContext())
+            {
+                return context.CarMMYs.AsNoTracking()
+                    .Where(c => c.Active == true && c.CarModel == carModel && c.CarYear == carYear)
+                    .Select(c => c.CarMMYId)
+                    .SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// AddLead
+        /// </summary>
+        /// <param name="lead"></param>
+        /// <returns></returns>
+        public long AddLead(Lead lead)
+        {
+            using (var context = new fyxmeContext())
+            {
+                context.Leads.Add(lead);
                 context.SaveChanges();
 
-                return l.Cases.ElementAt(0).CaseNo;
+                return lead.Cases.ElementAt(0).CaseNo;
             }
         }
 

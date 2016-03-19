@@ -542,6 +542,17 @@ html, body {
     width: 100%;
 }
 
+@media (max-width: 600px) {
+    #bg_why_fyxme_2 {
+        background-position: left -200px top 0px;
+    }
+}
+@media (max-width: 535px) {
+    #bg_why_fyxme_2 {
+        background-position: left -240px top 0px;
+    }
+}
+
 .section_title_why_fyxme
 {
     color: #231f20;

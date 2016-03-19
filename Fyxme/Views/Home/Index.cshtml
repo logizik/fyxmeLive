@@ -128,7 +128,7 @@
                                             </div>
                                             <div class="text-item-small">Don’t have a photo yet? No worries, just submit a brief description and text us the photo(s) later to <span>(323) 594-7401</span></div>
                                             <div id="spacer-input">
-                                                @Html.DropDownListFor(model => model.SelectedCarMakerId, new SelectList(Model.DDListCarMakers, "Value", "Text"), new { @Id = "cboCarMakers", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarModels', this.value, 'cboCarModels')" })
+                                                @Html.DropDownListFor(model => model.SelectedCarMakerId, new SelectList(Model.DDListCarMakers, "Value", "Text"), new { @Id = "cboCarMakers", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarModels', this.value, 'cboCarModels'); ddlUpdateValues('Home/UpdateCarYears', '', 'cboCarYears');" })
                                             </div>
                                             <div id="spacer-input">
                                                 @Html.DropDownListFor(model => model.SelectedCarModelId, new SelectList(Model.DDListCarModels, "Value", "Text"), new { @Id = "cboCarModels", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarYears', this.value, 'cboCarYears')" })

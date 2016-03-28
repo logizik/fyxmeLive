@@ -1,0 +1,42 @@
+﻿@model Fyxme.Models.TechnicianRequestViewModel
+@{
+    ViewBag.Title = "_PartialRequestTechnicianView";
+}
+
+@using (Html.BeginForm("SendTechRequest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="spacer-input">
+        @Html.TextBoxFor(techmodel => techmodel.FullName, new { @class = "textbox", placeholder = "Full Name" })
+        @Html.ValidationMessageFor(techmodel => techmodel.FullName, null, new { @class = "field-validation-error" })
+    </div>
+    <div id="spacer-input">
+        @Html.TextBoxFor(techmodel => techmodel.Email, new { @class = "textbox", placeholder = "Email Address" })
+        @Html.ValidationMessageFor(techmodel => techmodel.Email, null, new { @class = "field-validation-error" })
+    </div>
+    <div id="spacer-input">
+        @Html.TextBoxFor(techmodel => techmodel.PhoneNumber, new { @class = "textbox", placeholder = "Mobile Phone Number" })
+        @Html.ValidationMessageFor(techmodel => techmodel.PhoneNumber, null, new { @class = "field-validation-error" })
+    </div>
+    <div id="spacer-input">
+        @Html.TextBoxFor(techmodel => techmodel.ZipCode, new { @class = "textbox", placeholder = "Zip Code" })
+        @Html.ValidationMessageFor(techmodel => techmodel.ZipCode, null, new { @class = "field-validation-error" })
+    </div>
+    <div class="text-item">Upload Resume</div>
+    <div id="upload_resume">
+        <div class="u-file">
+         <input id="txtUFileResume" name="txtUFileResume" type="file" onchange="$('#TechResume').val(this.value.split('\\').pop().split('/').pop());">
+        </div>
+
+        @Html.TextBoxFor(techmodel => techmodel.Resume, new { @class = "textbox", placeholder = "Select your latest resume" })
+        @Html.ValidationMessageFor(techmodel => techmodel.Resume, null, new { @class = "field-validation-error" })
+        <div style="width:206px;">
+            <div id="btnUploadResume" name="btnUploadResume" class="btn-upload" onclick="browseFile('txtUFileResume');">Select Resume</div>
+        </div>
+    </div>
+    <br/>
+    <div class="text-item-small">By submitting my application, I agree that Fyxme or its representatives may contact me by email, phone, or text message at the email address or telephone number I provided.</div>
+    <div style="text-align:left;margin-bottom:16px;">
+        <button id="btnSubmitTechRequest" class="btn-upload" type="submit">Submit</button>
+    </div>
+}
+

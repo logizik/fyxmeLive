@@ -1,0 +1,84 @@
+﻿@model Fyxme.Models.RequestViewModel
+@{
+    ViewBag.Title = "_PartialRequestView";
+}
+
+@using (Html.BeginForm("AddRequest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div>
+        <div id="spacer-input">
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "textbox", placeholder = "First Name" })
+            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.TextBoxFor(model => model.LastName, new { @class = "textbox", placeholder = "Last Name" })
+            @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.TextBoxFor(model => model.Email, new { @class = "textbox", placeholder = "Email address" })
+            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "textbox", placeholder = "Mobile Phone Number" })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.TextBoxFor(model => model.ZipCode, new { @class = "textbox", placeholder = "Zip Code" })
+            @Html.ValidationMessageFor(model => model.ZipCode, null, new { @class = "field-validation-error" })
+        </div>
+        <!--<div class="text-item">Upload Photo(s)</div>-->
+        <div id="upload_pic_1">
+            <div class="u-file"><input id="txtUFile1" name="txtUFile1" type="file" onchange="$('#txtUploadPic1').val(this.value.split('\\').pop().split('/').pop());"></div>
+            <input type="text" id="txtUploadPic1" name="txtUploadPic1" class="textbox" placeholder="Select a photo to upload" />
+            <div style="width:206px;">
+                <div id="btnAddPic1" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
+                <div id="btnUpload1" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile1');">Select Photo</div>
+            </div>
+        </div>
+        <div id="upload_pic_2" class="upload-pic-form">
+            <input type="text" id="txtUploadPic2" name="txtUploadPic2" class="textbox" placeholder="Select a photo to upload" />
+            <div class="u-file"><input id="txtUFile2" name="txtUFile2" type="file" onchange="$('#txtUploadPic2').val(this.value.split('\\').pop().split('/').pop());"></div>
+            <div style="width:206px;">
+                <div id="btnAddPic2" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
+                <div id="btnUpload2" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile2');">Select Photo</div>
+            </div>
+        </div>
+        <div id="upload_pic_3" class="upload-pic-form">
+            <input type="text" id="txtUploadPic3" name="txtUploadPic3" class="textbox" placeholder="Select a photo to upload" />
+            <div class="u-file"><input id="txtUFile3" name="txtUFile3" type="file" onchange="$('#txtUploadPic3').val(this.value.split('\\').pop().split('/').pop());"></div>
+            <div style="width:206px;">
+                <div id="btnAddPic3" name="btnAddPic3" class="btn-upload" style="float:right; width:50px">+</div>
+                <div id="btnUpload3" name="btnUpload3" class="btn-upload" onclick="browseFile('txtUFile3');">Select Photo</div>
+            </div>
+        </div>
+        <div id="upload_pic_4" class="upload-pic-form">
+            <input type="text" id="txtUploadPic4" name="txtUploadPic4" class="textbox" placeholder="Select a photo to upload" />
+            <div class="u-file"><input id="txtUFile4" name="txtUFile4" type="file" onchange="$('#txtUploadPic4').val(this.value.split('\\').pop().split('/').pop());"></div>
+            <div id="btnUpload4" name="btnUpload4" class="btn-upload" onclick="browseFile('txtUFile4');">Select Photo</div>
+        </div>
+        <div class="text-item-small">Don’t have a photo yet? No worries, just submit a brief description and text us the photo(s) later to <span>(323) 594-7401</span></div>
+        <div id="spacer-input">
+            @Html.DropDownListFor(model => model.SelectedCarMakerId, new SelectList(Model.DDListCarMakers, "Value", "Text"), new { @Id = "cboCarMakers", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarModels', this.value, 'cboCarModels'); ddlUpdateValues('Home/UpdateCarYears', '', 'cboCarYears');" })
+            @Html.ValidationMessageFor(model => model.SelectedCarMakerId, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.DropDownListFor(model => model.SelectedCarModelId, new SelectList(Model.DDListCarModels, "Value", "Text"), new { @Id = "cboCarModels", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarYears', this.value, 'cboCarYears')" })
+            @Html.ValidationMessageFor(model => model.SelectedCarModelId, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.DropDownListFor(model => model.SelectedCarYearId, new SelectList(Model.DDListCarYears, "Value", "Text"), new { @Id = "cboCarYears", @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.SelectedCarYearId, null, new { @class = "field-validation-error" })
+        </div>
+        <div id="spacer-input">
+            @Html.TextAreaFor(model => model.DamageDescription, new { @class = "textarea", placeholder = "Damage Description (Optional)", id = "txtDamageDesc_01" })
+            @Html.ValidationMessageFor(model => model.DamageDescription, null, new { @class = "field-validation-error" })
+            <div class="characters-available" id="damageDescCharactersLeft_01"><span>500</span> charaters available</div>
+        </div>
+        <div class="text-item-small">By submitting my request for a quote, I agree that Fyxme or its representatives may contact me by email, phone, or text message at the email address or telephone number I provided.</div>
+        <div style="text-align:left;margin-bottom:16px;">
+            <button id="btnSubmit" class="btn-upload" type="submit">Submit</button>
+        </div>
+    </div>
+
+}

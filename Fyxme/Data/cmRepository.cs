@@ -115,6 +115,22 @@ namespace fyxme.Data.Model
             }
         }
 
+        /// <summary>
+        /// AddTechnician
+        /// </summary>
+        /// <param name="tech"></param>
+        /// <returns></returns>
+        public long AddTechician(Technician tech)
+        {
+            using (var context = new fyxmeContext())
+            {
+                context.Technicians.Add(tech);
+                context.SaveChanges();
+
+                return tech.TechnicianId;
+            }
+        }
+
         public List<RecentCasesViewModel> GetRecentCasesWithLeadProjection(int noCases)
         {
             using (var context = new fyxmeContext())

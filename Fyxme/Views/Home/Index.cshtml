@@ -1,6 +1,4 @@
-﻿@model Fyxme.Models.Request
-
-@{
+﻿@{
     ViewBag.Title = "Home";
 }
 
@@ -74,82 +72,7 @@
                             <div id="form">
                                 <div id="content">
 
-                                    @using (Html.BeginForm("AddRequest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                    {
-                                                                                <div>
-                                            <div id="spacer-input">
-                                                @Html.TextBoxFor(model => model.FirstName, new { @class = "textbox", placeholder = "First Name" })
-                                                @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "field-validation-error" })
-                                            </div>
-                                            <div id="spacer-input">
-                                                @Html.TextBoxFor(model => model.LastName, new { @class = "textbox", placeholder = "Last Name" })
-                                                @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "field-validation-error" })
-                                            </div>
-                                            <div id="spacer-input">
-                                                @Html.TextBoxFor(model => model.Email, new { @class = "textbox", placeholder = "Email address" })
-                                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "field-validation-error" })
-                                            </div>
-                                            <div id="spacer-input">
-                                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "textbox", placeholder = "Mobile Phone Number" })
-                                                @Html.ValidationMessageFor(model => model.PhoneNumber, null, new { @class = "field-validation-error" })
-                                            </div>
-                                            <div id="spacer-input">
-                                                @Html.TextBoxFor(model => model.ZipCode, new { @class = "textbox", placeholder = "Zip Code" })
-                                                @Html.ValidationMessageFor(model => model.ZipCode, null, new { @class = "field-validation-error" })
-                                            </div>
-                                            <!--<div class="text-item">Upload Photo(s)</div>-->
-                                            <div id="upload_pic_1">
-                                                <div class="u-file"><input id="txtUFile1" name="txtUFile1" type="file" onchange="$('#txtUploadPic1').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                                <input type="text" id="txtUploadPic1" name="txtUploadPic1" class="textbox" placeholder="Select a photo to upload" />
-                                                <div style="width:206px;">
-                                                    <div id="btnAddPic1" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
-                                                    <div id="btnUpload1" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile1');">Select Photo</div>
-                                                </div>
-                                            </div>
-                                            <div id="upload_pic_2" class="upload-pic-form">
-                                                <input type="text" id="txtUploadPic2" name="txtUploadPic2" class="textbox" placeholder="Select a photo to upload" />
-                                                <div class="u-file"><input id="txtUFile2" name="txtUFile2" type="file" onchange="$('#txtUploadPic2').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                                <div style="width:206px;">
-                                                    <div id="btnAddPic2" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
-                                                    <div id="btnUpload2" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile2');">Select Photo</div>
-                                                </div>
-                                            </div>
-                                            <div id="upload_pic_3" class="upload-pic-form">
-                                                <input type="text" id="txtUploadPic3" name="txtUploadPic3" class="textbox" placeholder="Select a photo to upload" />
-                                                <div class="u-file"><input id="txtUFile3" type="file" onchange="$('#txtUploadPic3').val(this.value.split('\\').pop().split('/').pop());"></div>
-                                                <div style="width:206px;">
-                                                    <div id="btnAddPic3" name="btnAddPic3" class="btn-upload" style="float:right; width:50px">+</div>
-                                                    <div id="btnUpload3" name="btnUpload3" class="btn-upload" onclick="browseFile('txtUFile3');">Select Photo</div>
-                                                </div>
-                                            </div>
-                                            <div id="upload_pic_4" class="upload-pic-form">
-                                                <input type="text" id="txtUploadPic4" name="txtUploadPic4" class="textbox" placeholder="Select a photo to upload" />
-                                                <div id="btnUpload4" name="btnUpload4" class="btn-upload" onclick="browseFile('txtUFile4');">Select Photo</div>
-                                            </div>
-                                            <div class="text-item-small">Don’t have a photo yet? No worries, just submit a brief description and text us the photo(s) later to <span>(323) 594-7401</span></div>
-                                            <div id="spacer-input">
-                                                @Html.DropDownListFor(model => model.SelectedCarMakerId, new SelectList(Model.DDListCarMakers, "Value", "Text"), new { @Id = "cboCarMakers", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarModels', this.value, 'cboCarModels'); ddlUpdateValues('Home/UpdateCarYears', '', 'cboCarYears');" })
-                                            </div>
-                                            <div id="spacer-input">
-                                                @Html.DropDownListFor(model => model.SelectedCarModelId, new SelectList(Model.DDListCarModels, "Value", "Text"), new { @Id = "cboCarModels", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarYears', this.value, 'cboCarYears')" })
-                                                @Html.ValidationMessageFor(model => model.SelectedCarModelId, null, new { @class = "field-validation-error" })
-                                            </div>
-                                            <div id="spacer-input">
-                                                @Html.DropDownListFor(model => model.SelectedCarYearId, new SelectList(Model.DDListCarYears, "Value", "Text"), new { @Id = "cboCarYears", @class = "textbox" })
-                                                @Html.ValidationMessageFor(model => model.SelectedCarYearId, null, new { @class = "field-validation-error" })
-                                            </div>
-                                             <div id="spacer-input">
-                                                @Html.TextAreaFor(model => model.DamageDescription, new { @class = "textarea", placeholder = "Damage Description (Optional)", id = "txtDamageDesc_01" })
-                                                @Html.ValidationMessageFor(model => model.DamageDescription, null, new { @class = "field-validation-error" })
-                                                <div class="characters-available" id="damageDescCharactersLeft_01"><span>500</span> charaters available</div>
-                                            </div>
-                                            <div class="text-item-small">By submitting my request for a quote, I agree that Fyxme or its representatives may contact me by email, phone, or text message at the email address or telephone number I provided.</div>
-                                                <div style="text-align:left;margin-bottom:16px;">
-                                                    <button id="btnSubmit" class="btn-upload" type="submit">Submit</button>
-                                                </div>
-                                            </div>
-
-                                    }
+                                    @Html.Partial("_PartialRequestView")
 
                                 </div>
                             </div>
@@ -260,160 +183,183 @@
             <div class="col-md-12">
                 <div class="tech-bottom">
                     <div>Are you a talented car technician?</div>
-                    <div class="btn-default-blue tech-btn">WORK WITH US</div>
+                    <div class="btn-default-blue tech-btn" id="btn-tech">WORK WITH US</div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <!-- End -->
-    <!-- FAQ -->
-    <div style="width:100%; background-color: #3d3637; padding-top: 30px;padding-bottom: 30px; margin-top: 28px;">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_car_new_ico.png")" width="80" height="80" /></div>
-                    <h2 class="faq-subtitle">Will the car look brand new?</h2>
-                    <p class="faq-subtitle-text">The car will look as if the scratch, dent or ding never happened (unless told otherwise by the technician prior to fixing your car).</p>
-                </div>
-                <div class="col-md-4">
-                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_qualified_ico.png")" width="80" height="80" /></div>
-                    <h2 class="faq-subtitle">Are the technicians qualified?</h2>
-                    <p class="faq-subtitle-text">We only work with professional car repair experts that provide high quality work.</p>
-                </div>
-                <div class="col-md-4">
-                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_included_ico.png")" width="80" height="80" /></div>
-                    <h2 class="faq-subtitle">Is there an additional fee for a technician to come to my location?</h2>
-                    <p class="faq-subtitle-text">No, our upfront pricing includes all fees.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="desktop-only">
-                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_repair_location_ico.png")" width="80" height="80" /></div>
-                    <h2 class="faq-subtitle">Will the car look brand new?</h2>
-                    <p class="faq-subtitle-text">The car will look as if the scratch, dent or ding never happened (unless told otherwise by the technician prior to fixing your car).</p>
-                </div>
-                <div class="col-md-4">
-                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_job_done_ico.png")" width="80" height="80" /></div>
-                    <h2 class="faq-subtitle">Are the technicians qualified?</h2>
-                    <p class="faq-subtitle-text">We only work with professional car repair experts that provide high quality work.</p>
-                </div>
-                <div class="col-md-4">
-                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/free_schedule_ico.png")" width="80" height="80" /></div>
-                    <h2 class="faq-subtitle">Is there an additional fee for a technician to come to my location?</h2>
-                    <p class="faq-subtitle-text">No, our upfront pricing includes all fees.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="desktop-only">
-                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- End -->
-    <!-- Testimonials -->
-    <div style="width:100%; background-color: #231f20; padding-top: 60px; padding-bottom: 30px; margin-bottom: 58px;">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-
-                    <ul class="bxslider">
-                        <li>
-                            <div class="testi-img testi-bg-1"></div>
-                            <div class="testi-text"><p>Nicole M, Downtown LA</p>Fyxme sent me a car technician the very next day. He performed the job while I was at work and I paid half of what the body shop quoted me. Thank you Fyxme.</div>
-                        </li>
-                        <li>
-                            <div class="testi-img testi-bg-2"></div>
-                            <div class="testi-text"><p>Marian G, Pasadena</p>After getting 3 overpriced quotes from different body shops I decided to use Fyxme. I was not disappointed, the technician came the same day and fixed my car in my driveway. He was polite, courteous, and saved me a lot of money.</div>
-                        </li>
-                        <li>
-                            <div class="testi-img testi-bg-3"></div>
-                            <div class="testi-text"><p>Freddy S. Santa Monica</p>I’m so glad I came across Fyxme. I paid significantly less and the job was perfect. My car looked as it had never been scratched before.</div>
-                        </li>
-                        <li>
-                            <div class="testi-img testi-bg-4"></div>
-                            <div class="testi-text"><p>Graham J. Venice Beach</p>Thank you Fyxme. Amazing job at a great price. Will definitely recommend you to anyone who needs your service.</div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- End -->
-    <!-- Contact Us -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="contact-us">CONTACT US</div>
-            </div>
-        </div>
+        <!--
         <div class="row">
             <div class="col-md-6">
-                <img src="@Url.Content("~/Content/Images/iconography_05.png")" width="80" height="80" />
-                <h2 class="subtitle_center">Phone</h2>
-                <p class="subtitle_text_center">1-888-98-FYXME</p>
+                <div id="tech-form">
+                    @{ Html.RenderPartial("_PartialRequestTechnicianView", new Fyxme.Models.TechnicianRequestViewModel()); }*/
+                </div>
             </div>
             <div class="col-md-6">
-                <img src="@Url.Content("~/Content/Images/thoughts_ico.png")" width="80" height="80" />
-                <h2 class="subtitle_center">email</h2>
-                <p class="subtitle_text_center">&nbsp;info@fyxme.com</p>
+                <div class="tech-desc-section">Join our community today and help us make the process of repairing cars a less painful experience for our customers. You earn more, they pay less, everyone wins!</div>
+                <div>
+                    <div style="float:left"><img src="@Url.Content("~/Content/Images/schedule_ico.png")" width="80" height="80" /></div>
+                    <div>
+                        <h2 class="tech-advantage">You set your own schedule</h2>
+                        <p class="tech-advantage-text">You have the flexibility to accept the jobs you want.  We send you the job details, pricing, location and client availability, you decide to take it or not.</p>
+                    </div>
+                </div>
+                <div>
+                    <div style="float:left"><img src="@Url.Content("~/Content/Images/bodyshop_ico.png")" width="80" height="80" /></div>
+                    <div>
+                        <h2 class="tech-advantage">You don't let the body shop underpay you</h2>
+                        <p class="tech-advantage-text">Forget about earning an hourly wage. You keep what you earn; just share a small cut with us.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End -->
-
-
-    <!-- Modal HTML embedded directly into document -->
-    <div id="ex1" style="display:none;">
-        <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
+            //-->
     </div>
 
-    <!-- Link to open the modal -->
-    <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+            <!-- End -->
+            <!-- FAQ -->
+            <div style="width:100%; background-color: #3d3637; padding-top: 30px;padding-bottom: 30px; margin-top: 28px;">
 
-<script>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_car_new_ico.png")" width="80" height="80" /></div>
+                            <h2 class="faq-subtitle">Will the car look brand new?</h2>
+                            <p class="faq-subtitle-text">The car will look as if the scratch, dent or ding never happened (unless told otherwise by the technician prior to fixing your car).</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_qualified_ico.png")" width="80" height="80" /></div>
+                            <h2 class="faq-subtitle">Are the technicians qualified?</h2>
+                            <p class="faq-subtitle-text">We only work with professional car repair experts that provide high quality work.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_included_ico.png")" width="80" height="80" /></div>
+                            <h2 class="faq-subtitle">Is there an additional fee for a technician to come to my location?</h2>
+                            <p class="faq-subtitle-text">No, our upfront pricing includes all fees.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="desktop-only">
+                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_repair_location_ico.png")" width="80" height="80" /></div>
+                            <h2 class="faq-subtitle">Will the car look brand new?</h2>
+                            <p class="faq-subtitle-text">The car will look as if the scratch, dent or ding never happened (unless told otherwise by the technician prior to fixing your car).</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_job_done_ico.png")" width="80" height="80" /></div>
+                            <h2 class="faq-subtitle">Are the technicians qualified?</h2>
+                            <p class="faq-subtitle-text">We only work with professional car repair experts that provide high quality work.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/free_schedule_ico.png")" width="80" height="80" /></div>
+                            <h2 class="faq-subtitle">Is there an additional fee for a technician to come to my location?</h2>
+                            <p class="faq-subtitle-text">No, our upfront pricing includes all fees.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="desktop-only">
+                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                        </div>
+                    </div>
+                </div>
 
-    function ddlUpdateValues(controller, value, object)
-    {
-        $.ajax({
-            url: controller,
-            type: 'post',
-            dataType: "json",
-            data: { value: value }
-        }).done(function (response) {
-            $("#" + object).empty();
-            var i = 1;
-            $.each(response, function (index, item) {
-                if (i == 1) {
-                    $("#" + object).append(
-                        $("<option></option>")
-                            .attr("value", "")
-                          .text(item.Text));
+            </div>
+            <!-- End -->
+            <!-- Testimonials -->
+            <div style="width:100%; background-color: #231f20; padding-top: 60px; padding-bottom: 30px; margin-bottom: 58px;">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <ul class="bxslider">
+                                <li>
+                                    <div class="testi-img testi-bg-1"></div>
+                                    <div class="testi-text"><p>Nicole M, Downtown LA</p>Fyxme sent me a car technician the very next day. He performed the job while I was at work and I paid half of what the body shop quoted me. Thank you Fyxme.</div>
+                                </li>
+                                <li>
+                                    <div class="testi-img testi-bg-2"></div>
+                                    <div class="testi-text"><p>Marian G, Pasadena</p>After getting 3 overpriced quotes from different body shops I decided to use Fyxme. I was not disappointed, the technician came the same day and fixed my car in my driveway. He was polite, courteous, and saved me a lot of money.</div>
+                                </li>
+                                <li>
+                                    <div class="testi-img testi-bg-3"></div>
+                                    <div class="testi-text"><p>Freddy S. Santa Monica</p>I’m so glad I came across Fyxme. I paid significantly less and the job was perfect. My car looked as it had never been scratched before.</div>
+                                </li>
+                                <li>
+                                    <div class="testi-img testi-bg-4"></div>
+                                    <div class="testi-text"><p>Graham J. Venice Beach</p>Thank you Fyxme. Amazing job at a great price. Will definitely recommend you to anyone who needs your service.</div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End -->
+            <!-- Contact Us -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="contact-us">CONTACT US</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="@Url.Content("~/Content/Images/iconography_05.png")" width="80" height="80" />
+                        <h2 class="subtitle_center">Phone</h2>
+                        <p class="subtitle_text_center">1-888-98-FYXME</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@Url.Content("~/Content/Images/thoughts_ico.png")" width="80" height="80" />
+                        <h2 class="subtitle_center">email</h2>
+                        <p class="subtitle_text_center">&nbsp;info@fyxme.com</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+            <!-- Modal HTML embedded directly into document -->
+            <!--<div id="ex1" style="display:none;">
+                <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
+            </div>//-->
+
+            <!-- Link to open the modal -->
+            <!--<p><a href="#ex1" rel="modal:open">Open Modal</a></p>//-->
+
+            <script>
+
+                function ddlUpdateValues(controller, value, object) {
+                    $.ajax({
+                        url: controller,
+                        type: 'post',
+                        dataType: "json",
+                        data: { value: value }
+                    }).done(function (response) {
+                        $("#" + object).empty();
+                        var i = 1;
+                        $.each(response, function (index, item) {
+                            if (i == 1) {
+                                $("#" + object).append(
+                                    $("<option></option>")
+                                        .attr("value", "")
+                                      .text(item.Text));
+                            }
+                            else {
+                                $("#" + object).append(
+                                    $("<option></option>")
+                                      .attr("value", item.Value)
+                                      .text(item.Text));
+                            }
+                            i++;
+                        });
+                    });
                 }
-                else {
-                    $("#" + object).append(
-                        $("<option></option>")
-                          .attr("value", item.Value)
-                          .text(item.Text));
-                }
-                i++;
-            });
-        });
-    }
 
-</script>
+            </script>

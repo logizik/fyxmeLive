@@ -585,7 +585,7 @@ html, body {
 }
 
 @media (max-width: 459px) {
-	.caption_center_white_3 { margin-top: 350px; }
+	.caption_center_white_3 { margin-top: 235px; }
 }
 
 
@@ -669,6 +669,49 @@ html, body {
     width: 220px;
     display: inline-table;
 }
+
+#tech-form {
+    display: none;
+}
+
+.tech-desc-section
+{
+    color: #231f20;
+    font-family: 'Cabin', sans-serif;
+	font-size: 19px;
+	font-weight: normal;
+	text-align: left;
+	text-transform: none;
+	padding: 0px 0px 12px;
+	line-height: 30px;
+    margin-top: 13px;
+}
+
+.tech-advantage
+{
+	color: #231F20;
+    font-family: 'Cabin', sans-serif;
+	font-size: 21px;
+	font-weight: 700;
+	text-align: left;
+	text-transform: none;
+	padding: 0px 0px 0px;
+    line-height: 25px;
+}
+
+.tech-advantage-text
+{
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+	padding: 0px 0px 0px;
+}
+
+
 
 
 /* Section < FAQ > */
@@ -816,3 +859,4 @@ html, body {
     position: absolute;
     width: 100%;
 }
+

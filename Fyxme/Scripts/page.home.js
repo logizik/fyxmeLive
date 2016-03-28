@@ -97,6 +97,15 @@ $(function () {
     $("#btnAddPic2").click(function () { $("#upload_pic_3").css(fadePic).slideDown("slow"); });
     $("#btnAddPic3").click(function () { $("#upload_pic_4").css(fadePic).slideDown("slow"); });
 
+    // Open / hide technician form
+    $("#btn-tech").click(function () {
+        if ($("#tech-form").css("display") == "none") {
+            $("#tech-form").slideDown("slow");
+        } else {
+            $("#tech-form").slideUp("slow");
+        }
+    });
+
     // Anchors nav
     $("#a1_how_it_works").click(function () {
         $('html, body').animate({

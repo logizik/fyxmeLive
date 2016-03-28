@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Fyxme.Models
 {
-    public class Request
+    public class RequestViewModel
     {
         [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
@@ -29,7 +29,7 @@ namespace Fyxme.Models
 
         public string Origin { get; set; }
 
-        /*[Required(ErrorMessage = "Car brand is required")]*/
+        [Required(ErrorMessage = "Car brand is required")]
         public string SelectedCarMakerId { get; set; }
         public IEnumerable<SelectListItem> DDListCarMakers { get; set; }
 

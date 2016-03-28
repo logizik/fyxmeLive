@@ -24,6 +24,7 @@ namespace fyxme.Data.Model
         public DbSet<CaseNote> CaseNotes { get; set; }
         public DbSet<CarMMY> CarMMYs { get; set; }
         public DbSet<Status> Status { get; set; }
+        public DbSet<Technician> Technicians { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

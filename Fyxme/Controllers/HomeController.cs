@@ -32,22 +32,22 @@ namespace Fyxme.Controllers
             }
 
             // Get list of distinct car models
-            var carModels = cmRepo.GetCarModels();
+            //var carModels = cmRepo.GetCarModels();
 
             List<SelectListItem> cboModels = new List<SelectListItem>();
             cboModels.Add(new SelectListItem { Text = "Car Model" });
 
-            foreach (var carModel in carModels)
+            /*foreach (var carModel in carModels)
             {
                 string text = carModel.GetType().GetProperty("CarModel").GetValue(carModel).ToString().ToUpper();
                 cboModels.Add(new SelectListItem { Value = text, Text = text });
-            }
+            }*/
 
             // Empty list of car years
             List<SelectListItem> cboYears = new List<SelectListItem>();
             cboYears.Add(new SelectListItem { Text = "Car Year" });
 
-            var requestModel = new Request();
+            var requestModel = new RequestViewModel();
             requestModel.DDListCarMakers = cboMakes;
             requestModel.DDListCarModels = cboModels;
             requestModel.DDListCarYears = cboYears;
@@ -56,7 +56,7 @@ namespace Fyxme.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddRequest(Request request)
+        public ActionResult AddRequest(RequestViewModel request)
         {
             if (ModelState.IsValid)
             {
@@ -126,18 +126,46 @@ namespace Fyxme.Controllers
                 long caseId = cmRepo.AddLead(l);
 
                 // Send emails
-                Email email = new Email(WebConfigurationManager.AppSettings["EmailSmtpHost"].ToString());
-
-                // Get email default config parameters
-                email.From = WebConfigurationManager.AppSettings["EmailFrom"].ToString();
-                email.Port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"].ToString());
-                email.NetworkCredentialUser = WebConfigurationManager.AppSettings["EmailNetworkCredentialUser"].ToString();
-                email.NetworkCredentialPassword = WebConfigurationManager.AppSettings["EmailNetworkCredentialPassword"].ToString();
-
-                SendEmailToClient(email, request, caseId);
-                SendEmailToAdmin(email, request, caseId, uploadedNewNameImages);
+                SendEmailToClient(request, caseId);
+                SendEmailToAdmin(request, caseId, uploadedNewNameImages);
 
                 // Redirect to confirmation view.
+                return RedirectToAction("RequestSent");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult SendTechRequest(TechnicianRequestViewModel techRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                // Save resume on server.
+                string uploadDirResume = Server.MapPath(WebConfigurationManager.AppSettings["uploadResumeDirectory"].ToString());
+                string resumeFileName = "";
+
+                HttpPostedFileBase uploadedFile = Request.Files["txtUFileResume"];
+                if (uploadedFile != null && uploadedFile.ContentLength > 0)
+                {
+                    int pos = uploadedFile.FileName.LastIndexOf(".");
+                    string fileExtension = uploadedFile.FileName.Substring(pos + 1);
+                    resumeFileName = String.Concat(Guid.NewGuid().ToString(), ".", fileExtension);
+                    uploadedFile.SaveAs(String.Concat(uploadDirResume, resumeFileName));
+                }
+
+                // Add technician
+                Technician tech = new Technician();
+                tech.Name = techRequest.FullName;
+                tech.Email = techRequest.Email;
+                tech.PhoneNumber = techRequest.PhoneNumber;
+                tech.ZipCode = techRequest.ZipCode;
+                tech.Resume = resumeFileName;
+                tech.ResumeLocation = uploadDirResume;
+                tech.CreatedBy = 999;
+
+                long techId = cmRepo.AddTechician(tech);
+
                 return RedirectToAction("RequestSent");
             }
 
@@ -200,9 +228,14 @@ namespace Fyxme.Controllers
             return this.Json(cboYears);
         }
 
-        public void SendEmailToClient(Email email, Request request, long caseId)
+        public void SendEmailToClient(RequestViewModel request, long caseId)
         {
             // Send email to client
+            Email email = new Email(WebConfigurationManager.AppSettings["EmailSmtpHost"].ToString());
+            email.From = WebConfigurationManager.AppSettings["EmailFrom"].ToString();
+            email.Port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"].ToString());
+            email.NetworkCredentialUser = WebConfigurationManager.AppSettings["EmailNetworkCredentialUser"].ToString();
+            email.NetworkCredentialPassword = WebConfigurationManager.AppSettings["EmailNetworkCredentialPassword"].ToString();
             email.To = request.Email;
             email.Subject = "We've received your request! - Fyxme.com";
 
@@ -211,7 +244,7 @@ namespace Fyxme.Controllers
             string htmlMailTemplate = sr.ReadToEnd();
 
             //htmlMailTemplate = htmlMailTemplate.Replace("{0}", Server.MapPath("~/Content/Images/fyxmy_logo_poster_.png"));
-            htmlMailTemplate = htmlMailTemplate.Replace("{0}", "http://www.fyxme.com/images/fyxmy_logo_poster_.png");
+            htmlMailTemplate = htmlMailTemplate.Replace("{0}", "http://www.fyxme.com/Content/Images/fyxmy_logo_poster_.png");
             htmlMailTemplate = htmlMailTemplate.Replace("{1}", request.FirstName.ToUpper());
             htmlMailTemplate = htmlMailTemplate.Replace("{2}", request.LastName.ToUpper());
             htmlMailTemplate = htmlMailTemplate.Replace("{3}", caseId.ToString());
@@ -223,17 +256,22 @@ namespace Fyxme.Controllers
             email.Send();
         }
 
-        public void SendEmailToAdmin(Email email, Request request, long caseId, List<string> imagesList)
+        public void SendEmailToAdmin(RequestViewModel request, long caseId, List<string> imagesList)
         {
             // Send email to fyxme admin
+            Email email = new Email(WebConfigurationManager.AppSettings["EmailSmtpHost"].ToString());
+            email.From = WebConfigurationManager.AppSettings["EmailFrom"].ToString();
+            email.Port = Convert.ToInt32(WebConfigurationManager.AppSettings["EmailPort"].ToString());
+            email.NetworkCredentialUser = WebConfigurationManager.AppSettings["EmailNetworkCredentialUser"].ToString();
+            email.NetworkCredentialPassword = WebConfigurationManager.AppSettings["EmailNetworkCredentialPassword"].ToString();
+            email.To = WebConfigurationManager.AppSettings["EmailAdmin"].ToString();
+            email.Subject = "You've received a new request! - Fyxme.com";
+
             // Get HTML template for Admin Request Received confirmation
             StreamReader sr = new StreamReader(Server.MapPath("~/Content/MailTemplates/MailSendAdminConfirmRequestReceived.html"));
             string htmlMailTemplate = sr.ReadToEnd();
 
-            email.To = WebConfigurationManager.AppSettings["EmailAdmin"].ToString();
-            email.Subject = "You've received a new request! - Fyxme.com";
-
-            htmlMailTemplate = htmlMailTemplate.Replace("{0}", "http://www.fyxme.com/images/fyxmy_logo_poster_.png");
+            htmlMailTemplate = htmlMailTemplate.Replace("{0}", "http://www.fyxme.com/Content/Images/fyxmy_logo_poster_.png");
             htmlMailTemplate = htmlMailTemplate.Replace("{1}", caseId.ToString());
             htmlMailTemplate = htmlMailTemplate.Replace("{2}", request.FirstName.ToUpper());
             htmlMailTemplate = htmlMailTemplate.Replace("{3}", request.LastName.ToUpper());

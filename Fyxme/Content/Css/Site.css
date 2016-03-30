@@ -851,6 +851,9 @@ html, body {
 .footer-text-copyright span{ color: red; }
 
 
+
+/* Page Request Sent > */
+
 #bgTopRequestSent {
     min-height: 726.9500000000003px;
 	padding-bottom: 0px;
@@ -860,3 +863,67 @@ html, body {
     width: 100%;
 }
 
+
+/* Page Work With Us > */
+
+#bgTopWorkWithUs {
+    min-height: 900px;
+	padding-bottom: 0px;
+	background: #CCCCCC url("/Content/Images/fyxme_van.jpg") no-repeat center top;
+	background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+#work-with-us-form-box {
+    width: 100%;
+    margin-top: 105px;
+    background-color: #f1f1f1;
+    padding-top: 18px;
+    text-align:center;
+    display: table;
+}
+
+.textbox-tech {
+    width: 100%;
+	border: 1px solid #ccc;
+	padding: 6px;
+    background-color: #fff;
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+}
+
+#spacer_to_content-tech
+{
+	margin-top: 780px;
+    position: absolute;
+    width: 100%;
+}
+
+
+.caption-left-white-tech-1 
+{
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: left;
+    text-transform: none;
+    padding: 0px 0px 12px;
+    margin-top: 480px;
+    line-height: 40px;
+}
+
+.caption-left-white-tech-2
+{
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 24px;
+    text-align: left;
+    text-transform: none;
+    padding: 0px;
+}

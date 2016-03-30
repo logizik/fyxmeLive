@@ -8,12 +8,15 @@ namespace Fyxme.Models
 {
     public class TechnicianRequestViewModel
     {
-        [Required(ErrorMessage = "Name is required")]
-        public string FullName { get; set; }
-
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "The email address is not valid")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Password is required")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        public string FullName { get; set; }
 
         [Required(ErrorMessage = "Mobile phone (or home phone) is required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "The phone number is not valid")]

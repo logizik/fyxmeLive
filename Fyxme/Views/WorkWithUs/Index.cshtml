@@ -1,0 +1,72 @@
+﻿@model Fyxme.Models.TechnicianRequestViewModel
+@{
+    ViewBag.Title = "Work With Us";
+}
+
+<!-- Top background -->
+<div id="bgTopWorkWithUs">
+
+    <!-- Centered captions -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="caption-left-white-tech-1">Work With Us</h1>
+                <h1 class="caption-left-white-tech-2">Join our community today and help us make the process of repairing cars a less painful experience for our customers. You earn more, they pay less, everyone wins!</h1>
+            </div>
+            <div class="col-md-5">
+                <div id="work-with-us-form-box">
+                    @using (Html.BeginForm("AddRequest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div style="width:92%; margin: 0 auto;">
+                            <div class="text-item">Login information</div>
+                            <div id="spacer-input">
+                                @Html.TextBoxFor(tech => tech.Email, new { @class = "textbox-tech", placeholder = "Email" })
+                                @Html.ValidationMessageFor(tech => tech.Email, null, new { @class = "field-validation-error" })
+                            </div>
+                            <div id="spacer-input">
+                                @Html.PasswordFor(tech => tech.Password, new { @class = "textbox-tech", placeholder = "Password" })
+                                @Html.ValidationMessageFor(tech => tech.Password, null, new { @class = "field-validation-error" })
+                            </div>
+                            <div class="text-item tech-form-label">How to reach you and resume</div>
+                            <div id="spacer-input">
+                                @Html.TextBoxFor(tech => tech.FullName, new { @class = "textbox-tech", placeholder = "Full Name" })
+                                @Html.ValidationMessageFor(tech => tech.FullName, null, new { @class = "field-validation-error" })
+                            </div>
+                            <div id="spacer-input">
+                                @Html.TextBoxFor(tech => tech.PhoneNumber, new { @class = "textbox-tech", placeholder = "Mobile Phone Number" })
+                                @Html.ValidationMessageFor(tech => tech.PhoneNumber, null, new { @class = "field-validation-error" })
+                            </div>
+                            <div id="spacer-input">
+                                @Html.TextBoxFor(tech => tech.ZipCode, new { @class = "textbox-tech", placeholder = "Zip Code" })
+                                @Html.ValidationMessageFor(tech => tech.ZipCode, null, new { @class = "field-validation-error" })
+                            </div>
+                            <!--<div class="text-item">Upload Photo(s)</div>-->
+                            <div id="upload_resume">
+                                <div class="u-file">
+                                    <input id="txtUFileResume" name="txtUFileResume" type="file" onchange="$('#Resume').val(this.value.split('\\').pop().split('/').pop());">
+                                </div>
+                                @Html.TextBoxFor(tech => tech.Resume, new { @class = "textbox-tech", placeholder = "Select your latest resume" })
+                                @Html.ValidationMessageFor(tech => tech.Resume, null, new { @class = "field-validation-error" })
+                                <div style="width:206px;">
+                                    <div id="btnUploadResume" name="btnUploadResume" class="btn-upload" onclick="browseFile('txtUFileResume');">Select Resume</div>
+                                </div>
+                            </div>
+                            <div id="spacer-input"></div>
+                            <div class="text-item-small">By submitting my request for a quote, I agree that Fyxme or its representatives may contact me by email, phone, or text message at the email address or telephone number I provided.</div>
+                            <div id="spacer-input"></div>
+                            <div style="text-align:left;margin-bottom:16px;">
+                                <button id="btnSubmit" class="btn-upload" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+</div>
+<!-- End -->
+
+<div id="spacer_to_content-tech">

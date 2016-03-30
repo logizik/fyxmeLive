@@ -32,16 +32,8 @@ namespace Fyxme.Controllers
             }
 
             // Get list of distinct car models
-            //var carModels = cmRepo.GetCarModels();
-
             List<SelectListItem> cboModels = new List<SelectListItem>();
             cboModels.Add(new SelectListItem { Text = "Car Model" });
-
-            /*foreach (var carModel in carModels)
-            {
-                string text = carModel.GetType().GetProperty("CarModel").GetValue(carModel).ToString().ToUpper();
-                cboModels.Add(new SelectListItem { Value = text, Text = text });
-            }*/
 
             // Empty list of car years
             List<SelectListItem> cboYears = new List<SelectListItem>();

@@ -195,10 +195,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\Admin.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Old\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Old\ManageController.cs" />
+    <Compile Include="Controllers\WorkWithUsController.cs" />
     <Compile Include="DataConfig\CarMMYConfiguration.cs" />
     <Compile Include="DataConfig\CaseConfiguration.cs" />
     <Compile Include="DataConfig\CaseNoteConfiguration.cs" />
@@ -223,7 +224,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Email.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginForm.cs" />
     <Compile Include="Models\Old\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />
@@ -394,6 +394,7 @@
     <Content Include="Views\Shared\_LayoutPartialAdminTop.cshtml" />
     <Content Include="Views\Home\_PartialRequestTechnicianView.cshtml" />
     <Content Include="Views\Home\_PartialRequestView.cshtml" />
+    <Content Include="Views\WorkWithUs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-5">
                 <div id="work-with-us-form-box">
-                    @using (Html.BeginForm("AddRequest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("AddTechRequest", "WorkWithUs", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div style="width:92%; margin: 0 auto;">
                             <div class="text-item">Login information</div>
@@ -63,6 +63,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
     <!-- End -->
 
@@ -70,3 +71,87 @@
 <!-- End -->
 
 <div id="spacer_to_content-tech">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="2"><img src="@Url.Content("~/Content/Images/schedule_ico.png")" width="80" height="80" /></td>
+                        <td class="section-title-tech">YOU SET YOUR OWN SCHEDULE</td>
+                    </tr>
+                    <tr>
+                        <td class="section-sub-title-tech">You have the flexibility to accept the jobs you want.  We send you the job details, pricing, location and client availability, you decide to take it or not.</td>
+                    </tr>
+                </table>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="2"><img src="@Url.Content("~/Content/Images/bodyshop_ico.png")" width="80" height="80" /></td>
+                        <td class="section-title-tech">YOU DON'T LET THE BODY SHOP UNDERPAY YOU</td>
+                    </tr>
+                    <tr>
+                        <td class="section-sub-title-tech">Forget about earning an hourly wage. You keep what you earn; just share a small cut with us.</td>
+                    </tr>
+                </table>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="2"><img src="@Url.Content("~/Content/Images/independent_ico.png")" width="80" height="80" /></td>
+                        <td class="section-title-tech">YOU'RE INDEPENDENT</td>
+                    </tr>
+                    <tr>
+                        <td class="section-sub-title-tech">You’re your own boss. Just do a good job and keep our customers happy.</td>
+                    </tr>
+                </table>
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="2"><img src="@Url.Content("~/Content/Images/winner_ico.png")" width="80" height="80" /></td>
+                        <td class="section-title-tech">BOTTOM LINE</td>
+                    </tr>
+                    <tr>
+                        <td class="section-sub-title-tech">You work when you want, and you make more money.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+                <div class="bottom-section-tech">FYXME'S REQUIREMENTS ARE EASY AND SIMPLE</div>
+                <div>
+                    <ul>
+                        <li>You are a certified car technician</li>
+                        <li>You pass a criminal background check</li>
+                        <li>You are polite and courteous</li>
+                        <li>You arrive on time to your appointments</li>
+                        <li>You have your own tools</li>
+                        <li>You must be authorized to work in the United States</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-us">CONTACT US</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/Images/iconography_05.png")" width="80" height="80" />
+                <h2 class="subtitle_center">Phone</h2>
+                <p class="subtitle_text_center">1-888-983-9963</p>
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/Images/thoughts_ico.png")" width="80" height="80" />
+                <h2 class="subtitle_center">email</h2>
+                <p class="subtitle_text_center">&nbsp;info@fyxme.com</p>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+

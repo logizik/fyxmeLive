@@ -867,12 +867,17 @@ html, body {
 /* Page Work With Us > */
 
 #bgTopWorkWithUs {
-    min-height: 900px;
+    min-height: 800px;
 	padding-bottom: 0px;
 	background: #CCCCCC url("/Content/Images/fyxme_van.jpg") no-repeat center top;
 	background-size: cover;
     position: absolute;
     width: 100%;
+}
+@media (max-width: 990px) {
+    #bgTopWorkWithUs {
+    min-height: 1000px;
+}
 }
 
 #work-with-us-form-box {
@@ -882,6 +887,11 @@ html, body {
     padding-top: 18px;
     text-align:center;
     display: table;
+}
+@media (max-width: 990px) {
+#work-with-us-form-box {
+    margin-top: 35px;
+}
 }
 
 .textbox-tech {
@@ -894,25 +904,44 @@ html, body {
 	font-size: 16px;
 }
 
+
 #spacer_to_content-tech
 {
-	margin-top: 780px;
+	margin-top: 800px;
     position: absolute;
     width: 100%;
 }
-
-
-.caption-left-white-tech-1 
+@media (max-width: 990px) {
+    #spacer_to_content-tech
 {
-    color: #fff;
-    font-family: 'Cabin', sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    text-align: left;
-    text-transform: none;
-    padding: 0px 0px 12px;
-    margin-top: 480px;
-    line-height: 40px;
+	margin-top: 1050px;
+}
+}
+
+
+.caption-left-white-tech-1 {
+        color: #fff;
+        font-family: 'Cabin', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        text-align: left;
+        text-transform: none;
+        padding: 0px 0px 12px;
+        margin-top: 480px;
+        line-height: 40px;
+    }
+@media (max-width: 990px) {
+    .caption-left-white-tech-1 {
+        color: #fff;
+        font-family: 'Cabin', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        text-align: left;
+        text-transform: none;
+        padding: 0px 0px 12px;
+        margin-top: 100px;
+        line-height: 40px;
+    }
 }
 
 .caption-left-white-tech-2
@@ -927,3 +956,60 @@ html, body {
     text-transform: none;
     padding: 0px;
 }
+
+.section-title-tech
+{
+    color: #231f20;
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 31px;
+	font-weight: normal;
+	text-align: left;
+	text-transform: none;
+	line-height: 41px;
+	padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 50px;
+}
+
+.section-sub-title-tech
+{
+	color: #666666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+    padding-left: 20px;
+}
+
+.bottom-section-tech
+{
+    color: #231f20;
+    font-family: 'Josefin Sans', sans-serif;
+	font-size: 31px;
+	font-weight: normal;
+	text-align: left;
+	text-transform: none;
+	line-height: 41px;
+    padding-bottom: 10px;
+    padding-top: 100px;
+}
+
+ul {
+    list-style: none; /* Remove list bullets */
+    padding-bottom: 100px;
+    margin: 0;
+    text-align: left;
+}
+
+li { 
+    padding-left: 16px; 
+}
+
+li:before {
+    content: "•"; /* Insert content that looks like bullets */
+    padding-right: 8px;
+    color: black; /* Or a color you prefer */
+}
+

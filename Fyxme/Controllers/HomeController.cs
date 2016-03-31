@@ -17,7 +17,7 @@ namespace Fyxme.Controllers
 
         public static List<CarMMY> carsMMYY = new List<CarMMY>();
 
-        public ActionResult Index()
+        public ActionResult Index(string showConfirmBox)
         {
             // Get list of distinct car makers
             var carMakes = cmRepo.GetCarMakes();
@@ -44,6 +44,11 @@ namespace Fyxme.Controllers
             requestModel.DDListCarModels = cboModels;
             requestModel.DDListCarYears = cboYears;
 
+            if (!String.IsNullOrEmpty(showConfirmBox))
+            {
+                ViewBag.ConfirmBox = showConfirmBox;
+            }
+
             return View(requestModel);
         }
 
@@ -59,7 +64,7 @@ namespace Fyxme.Controllers
                 for (int iImages = 1; iImages <= 4; iImages++)
                 {
                     HttpPostedFileBase uploadedFile = Request.Files["txtUFile" + iImages];
-                    if (uploadedFile != null && uploadedFile.ContentLength > 0)
+                    if (uploadedFile != null && uploadedFile.ContentLength > 0 && Request["txtUploadPic" + iImages].Length > 0)
                     {
                         int pos = uploadedFile.FileName.LastIndexOf(".");
                         string fileExtension = uploadedFile.FileName.Substring(pos + 1);
@@ -122,43 +127,7 @@ namespace Fyxme.Controllers
                 SendEmailToAdmin(request, caseId, uploadedNewNameImages);
 
                 // Redirect to confirmation view.
-                return RedirectToAction("RequestSent");
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult SendTechRequest(TechnicianRequestViewModel techRequest)
-        {
-            if (ModelState.IsValid)
-            {
-                // Save resume on server.
-                string uploadDirResume = Server.MapPath(WebConfigurationManager.AppSettings["uploadResumeDirectory"].ToString());
-                string resumeFileName = "";
-
-                HttpPostedFileBase uploadedFile = Request.Files["txtUFileResume"];
-                if (uploadedFile != null && uploadedFile.ContentLength > 0)
-                {
-                    int pos = uploadedFile.FileName.LastIndexOf(".");
-                    string fileExtension = uploadedFile.FileName.Substring(pos + 1);
-                    resumeFileName = String.Concat(Guid.NewGuid().ToString(), ".", fileExtension);
-                    uploadedFile.SaveAs(String.Concat(uploadDirResume, resumeFileName));
-                }
-
-                // Add technician
-                Technician tech = new Technician();
-                tech.Name = techRequest.FullName;
-                tech.Email = techRequest.Email;
-                tech.PhoneNumber = techRequest.PhoneNumber;
-                tech.ZipCode = techRequest.ZipCode;
-                tech.Resume = resumeFileName;
-                tech.ResumeLocation = uploadDirResume;
-                tech.CreatedBy = 999;
-
-                long techId = cmRepo.AddTechician(tech);
-
-                return RedirectToAction("RequestSent");
+                return RedirectToAction("Index", "Home", new { showConfirmBox = "Customer" });
             }
 
             return RedirectToAction("Index");

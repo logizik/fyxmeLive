@@ -2,6 +2,14 @@
     ViewBag.Title = "Home";
 }
 
+<script>
+
+    var confirmBox = "@(Request.QueryString["showConfirmBox"])";
+    if (confirmBox == "Customer") { alert("Your request has been sent succesfully. An email has been sent to you. You will receive a quote shortly. Thank you"); }
+    if (confirmBox == "Technician") { alert("An email has been sent to you. Thank you"); }
+
+</script>
+
 <!-- Top background -->
 <div id="bg_top">
 
@@ -315,7 +323,7 @@
                     <div class="col-md-6">
                         <img src="@Url.Content("~/Content/Images/iconography_05.png")" width="80" height="80" />
                         <h2 class="subtitle_center">Phone</h2>
-                        <p class="subtitle_text_center">1-888-98-FYXME</p>
+                        <p class="subtitle_text_center">1-888-983-9963</p>
                     </div>
                     <div class="col-md-6">
                         <img src="@Url.Content("~/Content/Images/thoughts_ico.png")" width="80" height="80" />

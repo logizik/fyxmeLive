@@ -42,12 +42,12 @@
                 <div class="option"><a id="a1_how_it_works" name="a1_how_it_works" href="#how-it-works">HOW IT WORKS</a></div>
                 <div class="option"><a id="a1_why_use_fyxme" name="a1_why_use_fyxme" href="#why-use-fyxme">WHY USE FYXME</a></div>
                 <div class="option"><a id="a1_technicians" name="a1_technicians" href="#meet-our-technicians">TECHNICIANS</a></div>
-                <div class="blue">1-888-983-9963</div>
+                <div class="blue">888-983-9963</div>
                 <div class="get_started_box" onclick="$('#btn_get_started').click();">GET STARTED</div>
             </div>
 
             <div class="mobile-only">
-                <div class="blue" id="mobPhone">1-888-983-9963</div>
+                <div class="blue" id="mobPhone">888-983-9963</div>
                 <div class="option"><img id="btnMenuForMobile" src="@Url.Content("~/Content/Images/mob_menu.png")" width="34" height="21" /></div>
             </div>
 
@@ -57,15 +57,38 @@
     <div class="mobile-only">
         <div id="mob_top_bg_color"></div>
         <div id="mob_options">
-            <div class="mob_option"><a id="a1_how_it_works" name="a1_how_it_works" href="#how-it-works">HOW IT WORKS</a></div>
-            <div class="mob_option"><a id="a1_why_use_fyxme" name="a1_why_use_fyxme" href="#why-use-fyxme">WHY USE FYXME</a></div>
-            <div class="mob_option"><a id="a1_technicians" name="a1_technicians" href="#technicians">TECHNICIANS</a></div>
-            <div class="mob_get_started_box">GET STARTED</div>
-        </div>
+            <div class="mob_option"><a id="a1_how_it_works_mob" name="a1_how_it_works_mob" href="#how-it-works">HOW IT WORKS</a></div>
+            <div class="mob_option"><a id="a1_why_use_fyxme_mob" name="a1_why_use_fyxme_mob" href="#why-use-fyxme">WHY USE FYXME</a></div>
+            <div class="mob_option"><a id="a1_technicians_mob" name="a1_technicians_mob" href="#meet-our-technicians">TECHNICIANS</a></div>
+            <div class="mob_option">888-983-9963</div>
+            <div class="mob_get_started_box" onclick="$('#btn_get_started').click();">GET STARTED</div>
+            </div>
     </div>
     <!-- End Top Menu -->
         
     @RenderBody()
+
+    <!-- Contact Us -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contact-us">CONTACT US</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/Images/iconography_05.png")" width="80" height="80" />
+                <h2 class="subtitle_center">Phone</h2>
+                <p class="subtitle_text_center">888-983-9963</p>
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/Images/thoughts_ico.png")" width="80" height="80" />
+                <h2 class="subtitle_center">email</h2>
+                <p class="subtitle_text_center">&nbsp;hello@fyxme.com</p>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
 
     <!-- Footer -->
     <div style="width:100%; background-color: #f1f1f1; padding-top: 30px; padding-bottom: 60px; margin-top: 34px;">
@@ -75,13 +98,13 @@
                 <div class="col-md-2">
                     <div class="footer-top-text">Fyxme</div>
                     <div class="footer-text">How it works</div>
-                    <div class="footer-text">About Us</div>
+                    <div class="footer-text"><a href="Home/AboutUs">About Us</a></div>
                     <div class="footer-text">FAQs</div>
                     <div class="footer-text">Testimonials</div>
                 </div>
                 <div class="col-md-2">
                     <div class="footer-top-text">Legal</div>
-                    <div class="footer-text">Privacy Policy</div>
+                    <div class="footer-text"><a href="Home/PrivacyPolicy">Privacy Policy</a></div>
                     <div class="footer-text">Terms & Conditions</div>
                 </div>
                 <div class="col-md-2">
@@ -91,7 +114,7 @@
                 <div class="col-md-2">
                     <div class="footer-top-text">Social</div>
                     <!--<div class="footer-text">Yelp</div>//-->
-                    <div class="footer-text">Facebook</div>
+                    <div class="footer-text"><a href="https://www.facebook.com/Fyxme-847120732084236/" target="_blank">Facebook</a></div>
                 </div>
             </div>
             <div class="row">

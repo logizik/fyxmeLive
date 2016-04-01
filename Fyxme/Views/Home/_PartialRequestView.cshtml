@@ -41,7 +41,7 @@
             <div class="u-file"><input id="txtUFile2" name="txtUFile2" type="file" onchange="$('#txtUploadPic2').val(this.value.split('\\').pop().split('/').pop());"></div>
             <div style="width:206px;">
                 <div id="btnAddPic2" name="btnAddPic1" class="btn-upload" style="float:right; width:50px">+</div>
-                <div id="btnUpload2" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile2');">Select Photo</div>
+                <div id="btnUpload2" name="btnUpload1" class="btn-upload" onclick="browseFile('txtUFile2');">Select Another Photo</div>
             </div>
         </div>
         <div id="upload_pic_3" class="upload-pic-form">
@@ -49,15 +49,15 @@
             <div class="u-file"><input id="txtUFile3" name="txtUFile3" type="file" onchange="$('#txtUploadPic3').val(this.value.split('\\').pop().split('/').pop());"></div>
             <div style="width:206px;">
                 <div id="btnAddPic3" name="btnAddPic3" class="btn-upload" style="float:right; width:50px">+</div>
-                <div id="btnUpload3" name="btnUpload3" class="btn-upload" onclick="browseFile('txtUFile3');">Select Photo</div>
+                <div id="btnUpload3" name="btnUpload3" class="btn-upload" onclick="browseFile('txtUFile3');">Select Another Photo</div>
             </div>
         </div>
         <div id="upload_pic_4" class="upload-pic-form">
             <input type="text" id="txtUploadPic4" name="txtUploadPic4" class="textbox" placeholder="Select a photo to upload" />
             <div class="u-file"><input id="txtUFile4" name="txtUFile4" type="file" onchange="$('#txtUploadPic4').val(this.value.split('\\').pop().split('/').pop());"></div>
-            <div id="btnUpload4" name="btnUpload4" class="btn-upload" onclick="browseFile('txtUFile4');">Select Photo</div>
+            <div id="btnUpload4" name="btnUpload4" class="btn-upload" onclick="browseFile('txtUFile4');">Select Another Photo</div>
         </div>
-        <div class="text-item-small">Don’t have a photo yet? No worries, just submit a brief description and text us the photo(s) later to <span>(323) 594-7401</span></div>
+        <div class="text-item-small">Don’t have a photo yet? No worries, just submit a brief description and text us the photo(s) later to <span>888-983-9963</span></div>
         <div id="spacer-input">
             @Html.DropDownListFor(model => model.SelectedCarMakerId, new SelectList(Model.DDListCarMakers, "Value", "Text"), new { @Id = "cboCarMakers", @class = "textbox", @onchange = "ddlUpdateValues('Home/UpdateCarModels', this.value, 'cboCarModels'); ddlUpdateValues('Home/UpdateCarYears', '', 'cboCarYears');" })
             @Html.ValidationMessageFor(model => model.SelectedCarMakerId, null, new { @class = "field-validation-error" })

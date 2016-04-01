@@ -76,6 +76,12 @@ $(function () {
     });
 
     $("#btn_get_started").click(function () {
+
+        $("#mob_options").fadeOut("slow", function () {
+            var fadeOut = { opacity: 0, transition: 'opacity 1s' };
+            $("#mob_top_bg_color").css(fadeOut).slideUp("slow");
+        });
+
         if ($("#form").css("display") == "none") {
             $("#btn_get_started").attr("class", "btn-get-started-white");
             $("#get_started_form").css("border", "2px solid #139deb");
@@ -129,6 +135,10 @@ $(function () {
     });
 
     $("#a1_why_use_fyxme").click(function () {
+        $("#mob_options").fadeOut("slow", function () {
+            var fadeOut = { opacity: 0, transition: 'opacity 1s' };
+            $("#mob_top_bg_color").css(fadeOut).slideUp("slow");
+        });
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top
         }, 1000);
@@ -136,12 +146,48 @@ $(function () {
     });
 
     $("#a1_technicians").click(function () {
+        $("#mob_options").fadeOut("slow", function () {
+            var fadeOut = { opacity: 0, transition: 'opacity 1s' };
+            $("#mob_top_bg_color").css(fadeOut).slideUp("slow");
+        });
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top
         }, 1000);
         return false;
     });
 
+    // Anchors nav mobile
+    $("#a1_how_it_works_mob").click(function () {
+        $("#mob_options").fadeOut("slow", function () {
+            var fadeOut = { opacity: 0, transition: 'opacity 1s' };
+            $("#mob_top_bg_color").css(fadeOut).slideUp("slow");
+        });
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 1000);
+        return false;
+    });
+    $("#a1_why_use_fyxme_mob").click(function () {
+        $("#mob_options").fadeOut("slow", function () {
+            var fadeOut = { opacity: 0, transition: 'opacity 1s' };
+            $("#mob_top_bg_color").css(fadeOut).slideUp("slow");
+        });
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 1000);
+        return false;
+    });
+    $("#a1_technicians_mob").click(function () {
+        $("#mob_options").fadeOut("slow", function () {
+            var fadeOut = { opacity: 0, transition: 'opacity 1s' };
+            $("#mob_top_bg_color").css(fadeOut).slideUp("slow");
+        });
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 1000);
+        return false;
+    });
+    
     // Calculate nb of characters left for damage description
     $('#txtDamageDesc_01').keyup(function () { TruncateText(500, 'txtDamageDesc_01', 'damageDescCharactersLeft_01'); });
 

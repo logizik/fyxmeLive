@@ -395,6 +395,8 @@
     <Content Include="Views\Home\_PartialRequestTechnicianView.cshtml" />
     <Content Include="Views\Home\_PartialRequestView.cshtml" />
     <Content Include="Views\WorkWithUs\Index.cshtml" />
+    <Content Include="Views\Home\AboutUsView.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicyView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

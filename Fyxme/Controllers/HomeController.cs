@@ -255,5 +255,15 @@ namespace Fyxme.Controllers
             email.Body = htmlMailTemplate;
             email.Send();
         }
+
+        public ActionResult AboutUs()
+        {
+            return View("AboutUsView");
+        }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View("PrivacyPolicyView");
+        }
     }
 }

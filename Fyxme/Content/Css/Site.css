@@ -160,7 +160,7 @@ html, body {
         top: 0;
         left: 0;
         width: 100%;
-        height: 330px;
+        height: 375px;
         background-color: #000;
         opacity: 1;
         z-index: 98;
@@ -177,7 +177,7 @@ html, body {
         cursor: pointer;
         z-index: 99;
         width: 100%;
-        height: 330px;
+        height: 375px;
         display: none;
     }
     #mob_options .mob_option {
@@ -837,6 +837,15 @@ html, body {
 .footer-text:hover {
     text-decoration: underline;
 }
+.footer-text a {
+    color: #666;
+	font-family: Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 26px;
+	text-align: left;
+	text-transform: none;
+}
 
 .footer-text-copyright {
     color: #999;
@@ -1011,5 +1020,73 @@ li:before {
     content: "•"; /* Insert content that looks like bullets */
     padding-right: 8px;
     color: black; /* Or a color you prefer */
+}
+
+
+/* Page About Us > */
+
+#bgTopAboutUs {
+    min-height: 710px;
+	padding-bottom: 0px;
+	background: #CCCCCC url("/Content/Images/fyxme_about_us.jpg") no-repeat center center;
+	background-size: cover;
+    position: absolute;
+    width: 100%;
+}
+
+#spacer_to_content-aboutus
+{
+	margin-top: 750px;
+    position: absolute;
+    width: 100%;
+}
+
+.caption-left-white-aboutus-1 {
+        color: #fff;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 38px;
+        font-weight: 700;
+        text-align: left;
+        text-transform: none;
+        padding: 0px 0px 12px;
+        margin-top: 320px;
+        line-height: 40px;
+}
+@media (max-width: 990px) {
+    .caption-left-white-aboutus-1 {
+        margin-top: 100px;
+        font-size: 32px;
+    }
+}
+
+.caption-left-white-aboutus-2
+{
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 24px;
+    text-align: left;
+    text-transform: none;
+    padding: 0px;
+}
+@media (max-width: 990px) {
+    .caption-left-white-aboutus-2 {
+        font-size: 18px;
+    }
+}
+
+
+#policy-privacy-text {
+    color: #231f20;
+    font-family: 'Cabin', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-align: left;
+    text-transform: none;
+    padding: 0px;
+    margin-top: 100px;
 }
 

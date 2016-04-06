@@ -109,7 +109,7 @@
                 <div class="section_title_why_fyxme">AVAILABLE IN THE FOLLOWING LOCATIONS</div>
             </div>
             <div class="col-md-12">
-                <div style="margin-top:20px;"><img src="@Url.Content("~/Content/Images/map.png")" style="width:55%;" /></div>
+                <div style="margin-top:20px;"><img src="@Url.Content("~/Content/Images/map.png")" class="map" /></div>
             </div>
             <div class="col-md-12">
                 <div class="text-item-default" style="margin-top:20px;margin-bottom:58px;"><b>California:</b> Los Angeles, Orange County.</div>
@@ -124,7 +124,7 @@
             <div class="col-md-12">
                 <div class="col-md-12">
                     <h1 class="caption_center_white_3">Don't let the body shop overcharge you</h1>
-                    <h1 class="caption_center_white_2">9 out of 10 body shops will turn a small job into a big job.<br />Our car technicians will only fix what’s necessary,<br />and for a fraction of the cost.</h1>
+                    <h1 class="caption_center_white_2"><div class="desktop-only">9 out of 10 body shops will turn a small job into a big job.<br /></div>Our car technicians will only fix what’s necessary,<br />and for a fraction of the cost.</h1>
                 </div>
             </div>
         </div>
@@ -193,6 +193,7 @@
                     <div>Are you a talented car technician?</div>
                     <div class="btn-default-blue tech-btn" id="btn-tech" onclick="window.location.href='WorkWithUs/'">WORK WITH US</div>
                 </div>
+                <a id="faq" name="faq"></a>
             </div>
         </div>
         <!--
@@ -223,105 +224,106 @@
             //-->
     </div>
 
-            <!-- End -->
-            <!-- FAQ -->
-            <div style="width:100%; background-color: #3d3637; padding-top: 30px;padding-bottom: 30px; margin-top: 28px;">
+    <!-- End -->
+    <!-- FAQ -->
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_car_new_ico.png")" width="80" height="80" /></div>
-                            <h2 class="faq-subtitle">Will the car look brand new?</h2>
-                            <p class="faq-subtitle-text">The car will look as if the scratch, dent or ding never happened (unless told otherwise by the technician prior to fixing your car).</p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_qualified_ico.png")" width="80" height="80" /></div>
-                            <h2 class="faq-subtitle">Are the technicians qualified?</h2>
-                            <p class="faq-subtitle-text">We only work with professional car repair experts that provide high quality work.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_included_ico.png")" width="80" height="80" /></div>
-                            <h2 class="faq-subtitle">Is there an additional fee for a technician to come to my location?</h2>
-                            <p class="faq-subtitle-text">No, our upfront pricing includes all fees.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="desktop-only">
-                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_repair_location_ico.png")" width="80" height="80" /></div>
-                            <h2 class="faq-subtitle">Where will the car technician repair my car?</h2>
-                            <p class="faq-subtitle-text">In your driveway or a garage near your home or work. If the job cannot be performed on site, our car technician will pick your car up and drop it back within 24 to 48 hours.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_job_done_ico.png")" width="80" height="80" /></div>
-                            <h2 class="faq-subtitle">When do I pay for the repair?</h2>
-                            <p class="faq-subtitle-text">You pay at the end once the job is completed.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="faq-img"><img src="@Url.Content("~/Content/Images/free_schedule_ico.png")" width="80" height="80" /></div>
-                            <h2 class="faq-subtitle">How quickly can I get a car technician?</h2>
-                            <p class="faq-subtitle-text">The same day or next day based on the technicians’ availability.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="desktop-only">
-                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                            <div class="col-md-4"><div class="faq-sepparator"></div></div>
-                        </div>
-                    </div>
+    <div style="width:100%; background-color: #3d3637; padding-top: 30px;padding-bottom: 30px; margin-top: 90px;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_car_new_ico.png")" width="80" height="80" /></div>
+                    <h2 class="faq-subtitle">Will the car look brand new?</h2>
+                    <p class="faq-subtitle-text">The car will look as if the scratch, dent or ding never happened (unless told otherwise by the technician prior to fixing your car).</p>
                 </div>
-
-            </div>
-            <!-- End -->
-            <!-- Testimonials -->
-            <div style="width:100%; background-color: #231f20; padding-top: 60px; padding-bottom: 30px; margin-bottom: 58px;">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <ul class="bxslider">
-                                <li>
-                                    <div class="testi-img testi-bg-1"></div>
-                                    <div class="testi-text"><p>Nicole M, Downtown LA</p>Fyxme sent me a car technician the very next day. He performed the job while I was at work and I paid half of what the body shop quoted me. Thank you Fyxme.</div>
-                                </li>
-                                <li>
-                                    <div class="testi-img testi-bg-2"></div>
-                                    <div class="testi-text"><p>Marian G, Pasadena</p>After getting 3 overpriced quotes from different body shops I decided to use Fyxme. I was not disappointed, the technician came the same day and fixed my car in my driveway. He was polite, courteous, and saved me a lot of money.</div>
-                                </li>
-                                <li>
-                                    <div class="testi-img testi-bg-3"></div>
-                                    <div class="testi-text"><p>Freddy S. Santa Monica</p>I’m so glad I came across Fyxme. I paid significantly less and the job was perfect. My car looked as it had never been scratched before.</div>
-                                </li>
-                                <li>
-                                    <div class="testi-img testi-bg-4"></div>
-                                    <div class="testi-text"><p>Graham J. Venice Beach</p>Thank you Fyxme. Amazing job at a great price. Will definitely recommend you to anyone who needs your service.</div>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_qualified_ico.png")" width="80" height="80" /></div>
+                    <h2 class="faq-subtitle">Are the technicians qualified?</h2>
+                    <p class="faq-subtitle-text">We only work with professional car repair experts that provide high quality work.</p>
                 </div>
-
+                <div class="col-md-4">
+                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_included_ico.png")" width="80" height="80" /></div>
+                    <h2 class="faq-subtitle">Is there an additional fee for a technician to come to my location?</h2>
+                    <p class="faq-subtitle-text">No, our upfront pricing includes all fees.</p>
+                </div>
             </div>
-            <!-- End -->
-            
-            <!-- Modal HTML embedded directly into document -->
-            <!--<div id="ex1" style="display:none;">
-                <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
-            </div>//-->
+            <div class="row">
+                <div class="desktop-only">
+                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_repair_location_ico.png")" width="80" height="80" /></div>
+                    <h2 class="faq-subtitle">Where will the car technician repair my car?</h2>
+                    <p class="faq-subtitle-text">In your driveway or a garage near your home or work. If the job cannot be performed on site, our car technician will pick your car up and drop it back within 24 to 48 hours.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/faq_job_done_ico.png")" width="80" height="80" /></div>
+                    <h2 class="faq-subtitle">When do I pay for the repair?</h2>
+                    <p class="faq-subtitle-text">You pay at the end once the job is completed.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="faq-img"><img src="@Url.Content("~/Content/Images/free_schedule_ico.png")" width="80" height="80" /></div>
+                    <h2 class="faq-subtitle">How quickly can I get a car technician?</h2>
+                    <p class="faq-subtitle-text">The same day or next day based on the technicians’ availability.</p>
+                </div>
+            </div>
+            <a id="testi" name="testi"></a>
+            <div class="row">
+                <div class="desktop-only">
+                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                    <div class="col-md-4"><div class="faq-sepparator"></div></div>
+                </div>
+            </div>
+        </div>
 
-            <!-- Link to open the modal -->
-            <!--<p><a href="#ex1" rel="modal:open">Open Modal</a></p>//-->
+    </div>
+    <!-- End -->
+    <!-- Testimonials -->
+    
+    <div style="width:100%; background-color: #231f20; padding-top: 60px; padding-bottom: 30px; margin-bottom: 58px;">
 
-            <script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <ul class="bxslider">
+                        <li>
+                            <div class="testi-img testi-bg-1"></div>
+                            <div class="testi-text"><p>Nicole M, Downtown LA</p>Fyxme sent me a car technician the very next day. He performed the job while I was at work and I paid half of what the body shop quoted me. Thank you Fyxme.</div>
+                        </li>
+                        <li>
+                            <div class="testi-img testi-bg-2"></div>
+                            <div class="testi-text"><p>Marian G, Pasadena</p>After getting 3 overpriced quotes from different body shops I decided to use Fyxme. I was not disappointed, the technician came the same day and fixed my car in my driveway. He was polite, courteous, and saved me a lot of money.</div>
+                        </li>
+                        <li>
+                            <div class="testi-img testi-bg-3"></div>
+                            <div class="testi-text"><p>Freddy S. Santa Monica</p>I’m so glad I came across Fyxme. I paid significantly less and the job was perfect. My car looked as it had never been scratched before.</div>
+                        </li>
+                        <li>
+                            <div class="testi-img testi-bg-4"></div>
+                            <div class="testi-text"><p>Graham J. Venice Beach</p>Thank you Fyxme. Amazing job at a great price. Will definitely recommend you to anyone who needs your service.</div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End -->
+    <!-- Modal HTML embedded directly into document -->
+    <!--<div id="ex1" style="display:none;">
+        <p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
+    </div>//-->
+    <!-- Link to open the modal -->
+    <!--<p><a href="#ex1" rel="modal:open">Open Modal</a></p>//-->
+
+    <script>
 
                 function ddlUpdateValues(controller, value, object) {
                     $.ajax({
@@ -350,4 +352,4 @@
                     });
                 }
 
-            </script>
+    </script>

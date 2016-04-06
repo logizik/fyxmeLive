@@ -18,7 +18,7 @@ namespace fyxme.Data.Entities
         public int? SalesRepId { get; set; }
 
         public CarMMY CarMMY { get; set; }
-        public int CarMMYId { get; set; }
+        public int? CarMMYId { get; set; }
         public virtual Lead Lead { get; set; }
         public long LeadId { get; set; }
         public virtual Status Status { get; set; }

@@ -26,7 +26,6 @@ namespace Fyxme.Models
         [Required(ErrorMessage = "Zip code is required")]
         public string ZipCode { get; set; }
 
-        [Required(ErrorMessage = "Resume is required")]
         public string Resume { get; set; }
     }
 }

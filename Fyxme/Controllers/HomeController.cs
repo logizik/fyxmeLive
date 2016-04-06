@@ -24,6 +24,7 @@ namespace Fyxme.Controllers
 
             List<SelectListItem> cboMakes = new List<SelectListItem>();
             cboMakes.Add(new SelectListItem { Text = "Car Brand" });
+            cboMakes.Add(new SelectListItem { Text = "--I don't know--" });
 
             foreach (var carMake in carMakes)
             {
@@ -76,7 +77,10 @@ namespace Fyxme.Controllers
                 }
 
                 // Get selected CarMMY id
-                int carMMYId = cmRepo.GetCarMMYId(request.SelectedCarModelId, Convert.ToInt32(request.SelectedCarYearId));
+                int carMMYId = 0;
+                if (!String.IsNullOrEmpty(request.SelectedCarModelId) && !String.IsNullOrEmpty(request.SelectedCarYearId)) {
+                    carMMYId = cmRepo.GetCarMMYId(request.SelectedCarModelId, Convert.ToInt32(request.SelectedCarYearId));
+                }
 
                 // Add lead object
                 // Lead
@@ -92,7 +96,9 @@ namespace Fyxme.Controllers
                 
                 // Case
                 Case c = new Case();
-                c.CarMMYId = (int)carMMYId;
+                if (carMMYId > 0) {
+                    c.CarMMYId = (int)carMMYId;
+                }
                 c.CaseDesc = request.DamageDescription;
                 c.StatusId = (int)EStatus.Received;
                 c.SalesRepId = 0;
@@ -264,6 +270,11 @@ namespace Fyxme.Controllers
         public ActionResult PrivacyPolicy()
         {
             return View("PrivacyPolicyView");
+        }
+
+        public ActionResult TermsConditions()
+        {
+            return View("TermsConditionsView");
         }
     }
 }

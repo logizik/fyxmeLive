@@ -32,18 +32,29 @@
 
 </head>
 <body>
-    
+
     <!-- Top Menu -->
     <div id="top_menu">
         <div id="fyxme_logo"><a href="@Url.Content("~/")"><img src="@Url.Content("~/Content/Images/fyxmy_logo.svg")" width="160" height="67" border="0" alt="" /></a></div>
         <div id="options">
 
             <div class="desktop-only">
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Home")
+            {
                 <div class="option"><a id="a1_how_it_works" name="a1_how_it_works" href="#how-it-works">HOW IT WORKS</a></div>
                 <div class="option"><a id="a1_why_use_fyxme" name="a1_why_use_fyxme" href="#why-use-fyxme">WHY USE FYXME</a></div>
                 <div class="option"><a id="a1_technicians" name="a1_technicians" href="#meet-our-technicians">TECHNICIANS</a></div>
                 <div class="blue">888-983-9963</div>
                 <div class="get_started_box" onclick="$('#btn_get_started').click();">GET STARTED</div>
+            }
+            else
+            {
+                <div class="option"><a id="a1_how_it_works" name="a1_how_it_works" href="@Url.Content("~/#how-it-works")">HOW IT WORKS</a></div>
+                <div class="option"><a id="a1_why_use_fyxme" name="a1_why_use_fyxme" href="@Url.Content("~/#why-use-fyxme")">WHY USE FYXME</a></div>
+                <div class="option"><a id="a1_technicians" name="a1_technicians" href="@Url.Content("~/#meet-our-technicians")">TECHNICIANS</a></div>
+                <div class="blue">888-983-9963</div>
+                <div class="get_started_box" onclick="window.location.href='@Url.Content("~/#how-it-works")'">GET STARTED</div>
+            }
             </div>
 
             <div class="mobile-only">
@@ -57,15 +68,26 @@
     <div class="mobile-only">
         <div id="mob_top_bg_color"></div>
         <div id="mob_options">
+            @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Home")
+            {
             <div class="mob_option"><a id="a1_how_it_works_mob" name="a1_how_it_works_mob" href="#how-it-works">HOW IT WORKS</a></div>
             <div class="mob_option"><a id="a1_why_use_fyxme_mob" name="a1_why_use_fyxme_mob" href="#why-use-fyxme">WHY USE FYXME</a></div>
             <div class="mob_option"><a id="a1_technicians_mob" name="a1_technicians_mob" href="#meet-our-technicians">TECHNICIANS</a></div>
             <div class="mob_option">888-983-9963</div>
             <div class="mob_get_started_box" onclick="$('#btn_get_started').click();">GET STARTED</div>
-            </div>
+            }
+            else
+            {
+                <div class="mob_option"><a id="a1_how_it_works" name="a1_how_it_works" href="@Url.Content("~/#how-it-works")">HOW IT WORKS</a></div>
+                <div class="mob_option"><a id="a1_why_use_fyxme" name="a1_why_use_fyxme" href="@Url.Content("~/#why-use-fyxme")">WHY USE FYXME</a></div>
+                <div class="mob_option"><a id="a1_technicians" name="a1_technicians" href="@Url.Content("~/#meet-our-technicians")">TECHNICIANS</a></div>
+                <div class="mob_option">888-983-9963</div>
+                <div class="mob_get_started_box" onclick="window.location.href='@Url.Content("~/#how-it-works")'">GET STARTED</div>
+            }
+        </div>
     </div>
     <!-- End Top Menu -->
-        
+
     @RenderBody()
 
     <!-- Contact Us -->
@@ -89,33 +111,33 @@
         </div>
     </div>
     <!-- End -->
-
     <!-- Footer -->
     <div style="width:100%; background-color: #f1f1f1; padding-top: 30px; padding-bottom: 60px; margin-top: 34px;">
 
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-sm-3 col-xs-6">
                     <div class="footer-top-text">Fyxme</div>
-                    <div class="footer-text">How it works</div>
-                    <div class="footer-text"><a href="Home/AboutUs">About Us</a></div>
-                    <div class="footer-text">FAQs</div>
-                    <div class="footer-text">Testimonials</div>
+                    <div class="footer-text"><a href="@Url.Content("~/#how-it-works")">How it works</a></div>
+                    <div class="footer-text"><a href="@Url.Content("~/Home/AboutUs")">About Us</a></div>
+                    <div class="footer-text"><a href="@Url.Content("~/#faq")">FAQs</a></div>
+                    <div class="footer-text"><a href="@Url.Content("~/#testi")">Testimonials</a></div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-3 col-xs-6">
                     <div class="footer-top-text">Legal</div>
-                    <div class="footer-text"><a href="Home/PrivacyPolicy">Privacy Policy</a></div>
-                    <div class="footer-text">Terms & Conditions</div>
+                    <div class="footer-text"><a href="@Url.Content("~/Home/PrivacyPolicy")">Privacy Policy</a></div>
+                    <div class="footer-text"><a href="@Url.Content("~/Home/TermsConditions")">Terms & Conditions</a></div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-3 col-xs-6">
                     <div class="footer-top-text">For Car<br />Technicians</div>
-                    <div class="footer-text">Work with Us</div>
+                    <div class="footer-text"><a href="@Url.Content("~/WorkWithUs")">Work with Us</a></div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-sm-3 col-xs-6">
                     <div class="footer-top-text">Social</div>
                     <!--<div class="footer-text">Yelp</div>//-->
                     <div class="footer-text"><a href="https://www.facebook.com/Fyxme-847120732084236/" target="_blank">Facebook</a></div>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -126,9 +148,8 @@
         </div>
     </div>
     <!-- End -->
-
     </div>
- 
+
     <!-- Google Tag Manager -->
     <noscript>
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-NWGNMZ"
@@ -141,6 +162,6 @@
      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
      })(window,document,'script','dataLayer','GTM-NWGNMZ');</script>
     <!-- End Google Tag Manager -->
-          
+
 </body>
 </html>

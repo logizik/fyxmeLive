@@ -46,7 +46,6 @@
                                     <input id="txtUFileResume" name="txtUFileResume" type="file" onchange="$('#Resume').val(this.value.split('\\').pop().split('/').pop());">
                                 </div>
                                 @Html.TextBoxFor(tech => tech.Resume, new { @class = "textbox-tech", placeholder = "Select your latest resume" })
-                                @Html.ValidationMessageFor(tech => tech.Resume, null, new { @class = "field-validation-error" })
                                 <div style="width:206px;">
                                     <div id="btnUploadResume" name="btnUploadResume" class="btn-upload" onclick="browseFile('txtUFileResume');">Select Resume</div>
                                 </div>

@@ -397,6 +397,7 @@
     <Content Include="Views\WorkWithUs\Index.cshtml" />
     <Content Include="Views\Home\AboutUsView.cshtml" />
     <Content Include="Views\Home\PrivacyPolicyView.cshtml" />
+    <Content Include="Views\Home\TermsConditionsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

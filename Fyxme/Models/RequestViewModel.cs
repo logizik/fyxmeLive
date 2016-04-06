@@ -29,15 +29,15 @@ namespace Fyxme.Models
 
         public string Origin { get; set; }
 
-        [Required(ErrorMessage = "Car brand is required")]
+        /*[Required(ErrorMessage = "Car brand is required")]*/
         public string SelectedCarMakerId { get; set; }
         public IEnumerable<SelectListItem> DDListCarMakers { get; set; }
 
-        [Required(ErrorMessage = "Car model is required")]
+        /*[Required(ErrorMessage = "Car model is required")]*/
         public string SelectedCarModelId { get; set; }
         public IEnumerable<SelectListItem> DDListCarModels { get; set; }
 
-        [Required(ErrorMessage = "Car year is required")]
+        /*[Required(ErrorMessage = "Car year is required")]*/
         public string SelectedCarYearId { get; set; }
         public IEnumerable<SelectListItem> DDListCarYears { get; set; }
 
